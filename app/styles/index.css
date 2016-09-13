@@ -1,3 +1,82 @@
+@font-face {
+  font-family: "Baloo";
+  src: local(Baloo), url("../fonts/Baloo/Baloo-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: local(Open_Sans), url("../fonts/Open_Sans/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: local(Source_Sans_Pro), url("../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf");
+}
+
 body {
   margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1em;
+  background-color: #E6EBE0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Sans Pro", sans-serif;
+  color: dimgray;
+}
+
+#brand-logo {
+  font-family: 'Baloo', cursive;
+  font-size: 4em;
+  display: block;
+  color: #1B2631;
+}
+
+#slogan {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.5em;
+  display: block;
+  margin-bottom: 20px;
+  color: #1B2631;
+}
+
+#welcome-box {
+  flex-basis: 600px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  background-color: #fff;
+}
+
+.landing-page-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-cols {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-rows {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.headline {
+  fontSize: 24;
+  paddingTop: 16;
+  marginBottom: 12;
+  fontWeight: 400;
+}
+
+.padding {
+  padding: 20px;
 }
