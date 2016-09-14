@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const Register = () => (
   <div className="container-cols">
+    <h3>Create an account to get started!</h3>
     <div>
       <TextField
         floatingLabelText="First Name"

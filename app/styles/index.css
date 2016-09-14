@@ -1,3 +1,15 @@
+/*********************** Color Palette ***********************/
+/*
+#ED6A5A Terra Cotta
+#F4F1BB Blond
+#9BC1BC Cambridge Blue (Light Blue)
+#5CA4A9 Cadet Blue
+#E6EBE0 Platinum
+#546673 Cadet (Dark Gray)
+*/
+
+/*********************** General ***********************/
+
 @font-face {
   font-family: "Baloo";
   src: local(Baloo), url("../fonts/Baloo/Baloo-Regular.ttf");
@@ -25,6 +37,8 @@ h1, h2, h3, h4, h5, h6 {
   color: dimgray;
 }
 
+/*********************** Welcome Page ***********************/
+
 #brand-logo {
   font-family: 'Baloo', cursive;
   font-size: 4em;
@@ -47,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #fff;
 }
 
-.landing-page-container {
+.container {
   height: 100vh;
   display: flex;
   align-items: center;
@@ -79,4 +93,99 @@ h1, h2, h3, h4, h5, h6 {
 
 .padding {
   padding: 20px;
+}
+
+/*********************** Sidebar ***********************/
+
+.container-sidebar-layout {
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+nav {
+  height: 100vh;
+  width: 17.578125%;
+  max-width: 250px;
+  min-width: 85px;
+  background-color: #546673;
+  color: aliceblue;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.25);
+}
+
+#user-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#avatar {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background-color: #F4F1BB;
+  margin: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.25);
+}
+
+#username {
+  color: aliceblue;
+}
+
+.avatar-img {
+  zoom: 2;
+  display: block;
+  margin: auto;
+  height: auto;
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+ul {
+  list-style-type: none;
+  list-style-position: outside;
+}
+
+#sidebar-nav {
+  margin: 0;
+  padding: 0;
+}
+
+li > a {
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* unvisited and visited link */
+li > a:link, li > a:visited {
+    color: #fff;
+}
+
+/* mouse over link */
+li > a:hover {
+    /*color: #9BC1BC;*/
+    background-color: #9BC1BC;
+}
+
+/* selected link */
+li > a:active {
+    color: #F4F1BB;
+}
+
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  width: 30px;
+  padding-right: 5px;
 }

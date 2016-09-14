@@ -2,9 +2,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
 import WelcomeTabs from 'components/WelcomeTabs';
 
-const App = React.createClass({
+const Welcome = React.createClass({
   render() {
-    return <div className="landing-page-container">
+    return <div className="container">
       <div className="container-cols">
         <div>
           <span id="brand-logo">Momentum</span>
@@ -20,4 +20,4 @@ const App = React.createClass({
   }
 });
 
-export default App;
+export default Welcome;
