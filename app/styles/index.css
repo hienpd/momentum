@@ -1,4 +1,5 @@
 /*********************** Color Palette ***********************/
+
 /*
 #ED6A5A Terra Cotta
 #F4F1BB Blond
@@ -30,11 +31,18 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 1em;
   background-color: #E6EBE0;
+  overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Source Sans Pro", sans-serif;
   color: dimgray;
+}
+
+main {
+  padding: 25px;
+  overflow-y: scroll;
+  height: 100vh;
 }
 
 /*********************** Welcome Page ***********************/
@@ -98,7 +106,6 @@ h1, h2, h3, h4, h5, h6 {
 /*********************** Sidebar ***********************/
 
 .container-sidebar-layout {
-  height: 100vh;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -112,6 +119,7 @@ nav {
   background-color: #546673;
   color: aliceblue;
   box-shadow: 0 1px 6px rgba(0,0,0,0.25);
+  overflow-y: scroll;
 }
 
 #user-box {
@@ -167,18 +175,17 @@ li > a {
 
 /* unvisited and visited link */
 li > a:link, li > a:visited {
-    color: #fff;
+  color: #fff;
 }
 
 /* mouse over link */
 li > a:hover {
-    /*color: #9BC1BC;*/
-    background-color: #9BC1BC;
+  background-color: #9BC1BC;
 }
 
 /* selected link */
 li > a:active {
-    color: #F4F1BB;
+  color: #F4F1BB;
 }
 
 .icon-box {
@@ -188,4 +195,10 @@ li > a:active {
   height: 30px;
   width: 30px;
   padding-right: 5px;
+}
+
+/**************** Forms *****************/
+
+.goal-form {
+  width: 1000px;
 }
