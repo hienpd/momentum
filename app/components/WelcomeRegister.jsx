@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const Register = () => (
+const WelcomeRegister = () => (
   <div className="container-cols">
     <h3>Create an account to get started!</h3>
     <div>
@@ -42,4 +42,4 @@ const Register = () => (
   </div>
 );
 
-export default Register;
+export default WelcomeRegister;

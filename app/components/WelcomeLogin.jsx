@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const Login = () => (
+const WelcomeLogin = () => (
   <div className="container-cols">
     <h3>Log in with your username and password</h3>
     <TextField
@@ -19,4 +19,4 @@ const Login = () => (
   </div>
 );
 
-export default Login;
+export default WelcomeLogin;
