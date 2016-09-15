@@ -199,6 +199,13 @@ li > a:active {
 
 /**************** Forms *****************/
 
-.goal-form {
+.goal-form-container {
   width: 1000px;
+  display: flex;
+  flex-direction: row;
+}
+
+.goal-form-col {
+  width: 50%;
+  margin: 10px;
 }

@@ -8,10 +8,14 @@ const NewGoal = React.createClass({
   render() {
     return <div>
       <h1>Set a New Goal</h1>
-      <Paper className="goal-form padding">
-        <NewGoalBasic />
-        <NewGoalFriends />
-        <NewGoalAdvanced />
+      <Paper className="goal-form-container padding">
+        <div className="goal-form-col">
+          <NewGoalBasic />
+        </div>
+        <div className="goal-form-col">
+          <NewGoalFriends />
+          <NewGoalAdvanced />
+        </div>
       </Paper>
     </div>;
   }
