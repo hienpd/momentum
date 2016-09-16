@@ -16,11 +16,13 @@ const NewGoal = React.createClass({
         <div className="goal-form-col">
           <NewGoalFriends />
           <NewGoalAdvanced />
-          <RaisedButton
-            className="goal-save-btn"
-            label="Save Goal"
-            secondary={true}
-          />
+          <div className="btn-container">
+            <RaisedButton
+              className="goal-save-btn"
+              label="Save Goal"
+              secondary={true}
+            />
+          </div>
         </div>
       </Paper>
     </div>;
