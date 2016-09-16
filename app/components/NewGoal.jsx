@@ -9,16 +9,16 @@ const NewGoal = React.createClass({
   render() {
     return <div>
       <h1>Set a New Goal</h1>
-      <Paper className="goal-form-container padding">
-        <div className="goal-form-col">
+      <Paper className="paper-container padding">
+        <div className="paper-col">
           <NewGoalBasic />
         </div>
-        <div className="goal-form-col">
+        <div className="paper-col">
           <NewGoalFriends />
           <NewGoalAdvanced />
           <div className="btn-container">
             <RaisedButton
-              className="goal-save-btn"
+              className="save-btn"
               label="Save Goal"
               secondary={true}
             />

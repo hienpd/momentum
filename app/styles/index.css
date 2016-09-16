@@ -197,16 +197,16 @@ li > a:active {
   padding-right: 5px;
 }
 
-/**************** Forms *****************/
+/**************** Main Stuff *****************/
 
-.goal-form-container {
+.paper-container {
   min-height: 70vh;
   min-width: 1000px;
   display: flex;
   flex-direction: row;
 }
 
-.goal-form-col {
+.paper-col {
   width: 50%;
   margin: 10px;
   display: flex;
@@ -222,7 +222,18 @@ li > a:active {
   justify-content: flex-end;
 }
 
-.goal-save-btn {
+.save-btn {
   margin-top: 50px;
   margin-bottom: 10px;
+}
+
+.preview {
+  text-align: center;
+  margin: 5px 15px;
+  height: 200px;
+  width: 500px;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+  border-top: 5px solid gray;
+  border-bottom: 5px solid gray;
 }
