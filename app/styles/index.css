@@ -208,4 +208,12 @@ li > a:active {
 .goal-form-col {
   width: 50%;
   margin: 10px;
+  position: relative;
+}
+
+.goal-save-btn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 10;
 }
