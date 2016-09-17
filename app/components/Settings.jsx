@@ -2,16 +2,27 @@ import React from 'react';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import ImageUpload from 'components/ImageUpload';
+import TextField from 'material-ui/TextField';
 
 const Settings = React.createClass({
   render() {
     return <div>
       <h1>Settings</h1>
-      <Paper className="padding">
+      <Paper className="paper-container padding">
         <div className="paper-col">
-          <p>Account Username: kerrywa</p>
-          <p>First Name: Kerry</p>
-          <p>Last Name: Washington</p>
+          <TextField
+            floatingLabelText="Account Username"
+            defaultValue="kerrywa"
+            disabled={true}
+          />
+          <TextField
+            floatingLabelText="First Name"
+            defaultValue="Kerry"
+          />
+          <TextField
+            floatingLabelText="Last Name"
+            defaultValue="Washington"
+          />
 
         </div>
         <div className="paper-col">

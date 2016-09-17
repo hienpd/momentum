@@ -237,3 +237,8 @@ li > a:active {
   border-top: 5px solid gray;
   border-bottom: 5px solid gray;
 }
+
+#img-container {
+  height: 100%;
+  width: 100%;
+}
