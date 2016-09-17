@@ -10,27 +10,30 @@ const Settings = React.createClass({
       <h1>Settings</h1>
       <Paper className="paper-container padding">
         <div className="paper-col">
+          <h3>Account Details</h3>
           <TextField
-            floatingLabelText="Account Username"
+            floatingLabelText="Username"
             defaultValue="kerrywa"
             disabled={true}
+            fullWidth={true}
           />
           <TextField
             floatingLabelText="First Name"
             defaultValue="Kerry"
+            fullWidth={true}
           />
           <TextField
             floatingLabelText="Last Name"
-            defaultValue="Washington"
+            defaultValue="Washington"            fullWidth={true}
           />
-
         </div>
         <div className="paper-col">
-        <ImageUpload />
+          <h3>Avatar</h3>
+          <ImageUpload />
           <div className="btn-container">
             <RaisedButton
               className="save-btn"
-              label="Log Out"
+              label="Save Changes"
               secondary={true}
             />
           </div>

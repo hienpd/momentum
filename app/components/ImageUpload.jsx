@@ -1,4 +1,5 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class ImageUpload extends React.Component {
   constructor(props) {
@@ -32,30 +33,36 @@ class ImageUpload extends React.Component {
     let $imagePreview = null;
     if (imagePreviewUrl) {
       $imagePreview = (<img
-        id="img-container"
+        id="img-preview"
         src={imagePreviewUrl}
       />);
     }
     else {
-      $imagePreview = (<div>Please upload an image to preview</div>);
+      $imagePreview = (<div id="empty-preview"><i className="fa fa-user fa-3x fa-inverse" aria-hidden="true"></i></div>);
     }
 
     return <div>
-        <form onSubmit={(e) => this._handleSubmit(e)}>
-          <input
-            type="file"
-            onChange={(e) => this._handleImageChange(e)}
-          />
-          <button
-            type="submit"
-            onClick={(e) => this._handleSubmit(e)}
-          >
-            Upload Image
-          </button>
+        <form
+          className="container-cols container-preview"
+          onSubmit={(e) => this._handleSubmit(e)}>
+            <div className="container-rows">
+              <div className="preview">
+                {$imagePreview}
+              </div>
+              <input
+                type="file"
+                onChange={(e) => this._handleImageChange(e)}
+              />
+            </div>
+            <div>
+              <RaisedButton
+                type="submit"
+                onClick={(e) => this._handleSubmit(e)}
+                label="Upload Image"
+                primary={true}
+              />
+            </div>
         </form>
-        <div className="preview">
-          {$imagePreview}
-        </div>
       </div>;
   }
 };

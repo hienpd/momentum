@@ -209,6 +209,7 @@ li > a:active {
 .paper-col {
   width: 50%;
   margin: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -228,17 +229,28 @@ li > a:active {
 }
 
 .preview {
-  text-align: center;
-  margin: 5px 15px;
-  height: 200px;
-  width: 500px;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  border-top: 5px solid gray;
-  border-bottom: 5px solid gray;
+  width: 65px;
+  height: 65px;
+  margin: 10px;
 }
 
-#img-container {
+#img-preview {
+  border-radius: 50%;
   height: 100%;
   width: 100%;
+}
+
+#empty-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  background-color: #F4F1BB;
+}
+
+.container-preview {
+  align-items: flex-start;
+  justify-content: flex-start;
 }
