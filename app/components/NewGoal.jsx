@@ -1,19 +1,35 @@
-import React from 'react';
-import Paper from 'material-ui/Paper';
-import NewGoalBasic from 'components/NewGoalBasic';
-import NewGoalFriends from 'components/NewGoalFriends';
 import NewGoalAdvanced from 'components/NewGoalAdvanced';
+import NewGoalFriends from 'components/NewGoalFriends';
+import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
+import React from 'react';
+import TextField from 'material-ui/TextField';
+import FontIcon from 'material-ui/FontIcon';
 
 const NewGoal = React.createClass({
   render() {
     return <div>
       <h1>Set a New Goal</h1>
-      <Paper className="paper-container padding">
+      <Paper className="paper-container padding-sides">
         <div className="paper-col">
-          <NewGoalBasic />
+          <h3>Goal Basics</h3>
+          <TextField
+            floatingLabelText="Goal Name"
+            fullWidth={true}
+          />
+          <div className="container-rows">
+            <TextField
+              floatingLabelText="Add a Step"
+            />
+            <RaisedButton
+              label="Add"
+              primary={true}
+              className="left-margin"
+            />
+          </div>
         </div>
         <div className="paper-col">
+          <h3>Optional Settings</h3>
           <NewGoalFriends />
           <NewGoalAdvanced />
           <div className="btn-container">

@@ -1,8 +1,9 @@
-import React from 'react';
 import { Card, CardHeader, CardText } from 'material-ui/Card';
-import TextField from 'material-ui/TextField';
+import DatePicker from 'material-ui/DatePicker';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 const NewGoalAdvanced = React.createClass({
   render() {
@@ -16,12 +17,19 @@ const NewGoalAdvanced = React.createClass({
         showExpandableButton={true}
       />
       <CardText expandable={true}>
-        <TextField floatingLabelText="Set Deadline" />
-        <br />
-        <TextField floatingLabelText="Set Target" />
-        <FloatingActionButton mini={true}>
-          <ContentAdd />
-        </FloatingActionButton>
+        <DatePicker
+          mode="landscape"
+          hintText="Set Deadline"
+          primary={true}
+        />
+        <div className="container-rows">
+          <TextField floatingLabelText="Set Target" />
+          <RaisedButton
+            label="Add"
+            primary={true}
+            className="left-margin"
+          />
+        </div>
       </CardText>
     </Card>;
   }

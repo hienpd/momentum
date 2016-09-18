@@ -8,7 +8,7 @@ const Settings = React.createClass({
   render() {
     return <div>
       <h1>Settings</h1>
-      <Paper className="paper-container padding">
+      <Paper className="paper-container padding-sides">
         <div className="paper-col">
           <h3>Account Details</h3>
           <TextField
@@ -24,7 +24,8 @@ const Settings = React.createClass({
           />
           <TextField
             floatingLabelText="Last Name"
-            defaultValue="Washington"            fullWidth={true}
+            defaultValue="Washington"
+            fullWidth={true}
           />
         </div>
         <div className="paper-col">
