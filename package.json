@@ -11,11 +11,14 @@
   "scripts": {
     "deploy": "rm -rf public; brunch build --production; surge public",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public",
-    "start": "brunch watch --server"
+    "start": "brunch watch --server",
+    "knex": "knex"
   },
   "dependencies": {
     "chart.js": "^2.2.2",
+    "knex": "^0.12.1",
     "material-ui": "^0.15.4",
+    "pg": "^6.1.0",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-router": "^2.8.1",
