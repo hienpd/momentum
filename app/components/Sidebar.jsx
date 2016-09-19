@@ -16,7 +16,7 @@ const Sidebar = React.createClass({
               <div className="icon-box">
                 <i className="fa fa-tachometer fa-lg" aria-hidden="true"></i>
               </div>
-              Goals Dashboard
+              Dashboard
             </a>
             </li>
           <li>
@@ -24,7 +24,7 @@ const Sidebar = React.createClass({
               <div className="icon-box">
                 <i className="fa fa-bullseye fa-lg" aria-hidden="true"></i>
               </div>
-              Your Goals
+              Goals
             </a>
           </li>
           <ul id="sidebar-goals">

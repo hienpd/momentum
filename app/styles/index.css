@@ -263,3 +263,54 @@ li > a:active {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+#dashboard-chart {
+  width: 800px;
+  height: 400px;
+  margin: 20px;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  margin: 10px;
+}
+
+.dashboard-rows {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.dashboard-chart {
+  height: 400px;
+  width: 800px;
+  background-color: #F4F1BB;
+  margin-bottom: 20px;
+}
+
+.dashboard-goal {
+  height: 200px;
+  width: 400px;
+  margin: 10px;
+  background-color: orange;
+
+}
+
+.goal-details {
+  width: 75%;
+  height: 100%;
+}
+
+.goal-progress {
+  width: 25%;
+  height: 100%;
+}
+
+.left-align {
+  align-self: flex-start;
+}
