@@ -314,3 +314,8 @@ li > a:active {
 .left-align {
   align-self: flex-start;
 }
+
+#myChart {
+  width: 400px;
+  height: 400px;
+}

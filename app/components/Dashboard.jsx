@@ -1,14 +1,25 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
+import ChartProgress from 'components/ChartProgress';
 
 const Dashboard = React.createClass({
+  getInitialState() {
+    return {
+      progress: [1, 2, 3]
+    }
+  },
+
   render() {
     return <div>
       <h1>Dashboard</h1>
       <Paper className="paper-container padding-sides">
         <div className="dashboard-container">
           <h3 className="left-align">Productivity</h3>
-          <div className="dashboard-chart"></div>
+          <div className="dashboard-chart">
+            <ChartProgress
+              progress={this.state.progress}
+            />
+          </div>
           <div className="dashboard-rows">
             <div className="dashboard-goal">
               <div className="goal-details padding-sides">
