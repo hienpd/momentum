@@ -15,6 +15,7 @@ const WelcomeLogin = () => (
     <RaisedButton
       label="Log In"
       secondary={true}
+      className="margin"
     />
   </div>
 );

@@ -79,7 +79,6 @@ main {
 .container-cols {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
 }
@@ -88,7 +87,7 @@ main {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: left-margin;
+  justify-content: center;
   align-items: center;
 }
 
@@ -101,6 +100,10 @@ main {
 
 .padding {
   padding: 20px;
+}
+
+.margin {
+  margin: 20px;
 }
 
 .left-margin {

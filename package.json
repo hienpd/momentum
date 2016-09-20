@@ -15,12 +15,15 @@
     "knex": "knex"
   },
   "dependencies": {
+    "axios": "^0.14.0",
     "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.15.2",
     "boom": "^4.0.0",
     "chart.js": "^2.2.2",
     "cookie-parser": "^1.4.3",
     "humps": "^1.1.0",
+    "joi": "^9.0.4",
+    "jsonwebtoken": "^7.1.9",
     "knex": "^0.12.1",
     "material-ui": "^0.15.4",
     "morgan": "^1.7.0",
