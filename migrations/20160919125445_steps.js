@@ -11,10 +11,12 @@ exports.up = function(knex) {
       .onDelete('CASCADE')
       .index();
     table.integer('user_id')
-      .notNullable()
+      .nullable()
       .references('id')
       .inTable('users')
-    table.timestamp('completed_at').notNullable().defaultTo('');
+      .onDelete('SET NULL')
+      .index();
+    table.timestamp('completed_at');
     table.timestamps(true, true);
   });
 };
