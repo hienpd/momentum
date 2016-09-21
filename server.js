@@ -45,8 +45,16 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 const users = require('./routes/users');
+const goals = require('./routes/goals');
+const steps = require('./routes/steps');
+const token = require('./routes/token');
+const goals_users = require('./routes/goals_users');
 
 app.use('/api', users);
+app.use('/api', goals);
+app.use('/api', steps);
+app.use('/api', token);
+app.use('/api', goals_users);
 
 app.use((_req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
