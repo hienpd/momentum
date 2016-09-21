@@ -33,18 +33,25 @@ router.get('/steps/:goalId', checkAuth, (req, res, next) => {
     });
 });
 
-// Save a step, with the step_name and goal_id
-router.post('/steps', (req, res, next) => {
-  const { stepName, goalId } = req.body;
+// Save a step, with the step_name and goal_name
+router.post('/steps', checkAuth, (req, res, next) => {
+  const { stepName, goalName } = req.body;
 
-  knex('steps')
-    .insert(decamelizeKeys({ stepName, goalId }), '*')
+  knex('goals')
+    .select('id')
+    .where('goal_name', goalName)
+    .then((goals) => {
+      const goalId = goals[0].id;
+
+      return knex('steps')
+        .insert(decamelizeKeys({ stepName, goalId }), '*');
+      })
     .then((steps) => {
       res.send(steps[0]);
     })
     .catch((err) => {
       next(err);
     });
-});
+    });
 
 module.exports = router;
