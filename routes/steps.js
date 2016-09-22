@@ -10,17 +10,19 @@ const router = express.Router();
 
 // Count rows that have completed_at containing a certain month
 // select * from (select count(*), date_trunc( 'day', created_at ) from steps group by date_trunc( 'day', created_at )) as foo where date_trunc = '2016-09-21';
-router.get('/steps/count/:username', checkAuth, (req, res, next) => {
+router.get('/steps/count/:username/:month', checkAuth, (req, res, next) => {
+  const { username, month } = req.params;
+
   knex('users')
     .select('id')
-    .where('username', req.params.username)
+    .where('username', username)
     .first()
     .then((response) => {
-      return knex.raw(`select * from (select count(*), date_trunc( 'day', created_at ) from steps where user_id = ${response.id} group by date_trunc( 'day', created_at )) as foo where date_trunc = '2016-09-21'`)
+      return knex.raw(`select * from (select count(*), date_trunc( 'month', completed_at ) from steps where user_id = ${response.id} group by date_trunc( 'month', completed_at )) as foo where date_trunc = '${month}-01'`)
     })
     .then((completedSteps) => {
       console.log(completedSteps);
-      res.send(completedSteps.rowCount.toString());
+      res.send(completedSteps.rows[0].count);
     })
     .catch((err) => {
       next(err);
