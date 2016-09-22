@@ -29,23 +29,26 @@ exports.seed = function(knex) {
       },{
         id: 6,
         goal_id: 2,
-        step_name: 'Reserve party room'
+        step_name: 'Reserve party room',
+        user_id: 1,
         completed_at: new Date('2016-09-20 14:26:16 UTC')
-        user
       },{
         id: 7,
         goal_id: 2,
-        step_name: 'Send invites'
+        step_name: 'Send invites',
+        user_id: 2,
         completed_at: new Date('2016-09-21 14:26:16 UTC')
       },{
         id: 8,
         goal_id: 2,
-        step_name: 'Make a playlist'
+        step_name: 'Make a playlist',
+        user_id: 2,
         completed_at: new Date('2016-09-22 14:26:16 UTC')
       },{
         id: 9,
         goal_id: 2,
-        step_name: 'Order pizza'
+        step_name: 'Order pizza',
+        user_id: 1,
         completed_at: new Date('2016-09-23 14:26:16 UTC')
       },{
         id: 10,
