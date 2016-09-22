@@ -45,7 +45,7 @@ const ChartProgress = React.createClass({
   },
 
   render() {
-    return <canvas id="myChart"></canvas>;
+    return <canvas></canvas>;
   }
 });
 

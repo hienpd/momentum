@@ -8,12 +8,19 @@ const { decamelizeKeys } = require('humps');
 // eslint-disable-next-line new-cap
 const router = express.Router();
 
-// Get all steps, probably not useful
-router.get('/steps', (_req, res, next) => {
-  knex('steps')
-    .orderBy('id')
-    .then((steps) => {
-      res.send(steps);
+// Count rows that have completed_at containing a certain month
+// select * from (select count(*), date_trunc( 'day', created_at ) from steps group by date_trunc( 'day', created_at )) as foo where date_trunc = '2016-09-21';
+router.get('/steps/count/:username', checkAuth, (req, res, next) => {
+  knex('users')
+    .select('id')
+    .where('username', req.params.username)
+    .first()
+    .then((response) => {
+      return knex.raw(`select * from (select count(*), date_trunc( 'day', created_at ) from steps where user_id = ${response.id} group by date_trunc( 'day', created_at )) as foo where date_trunc = '2016-09-21'`)
+    })
+    .then((completedSteps) => {
+      console.log(completedSteps);
+      res.send(completedSteps.rowCount.toString());
     })
     .catch((err) => {
       next(err);
@@ -21,7 +28,7 @@ router.get('/steps', (_req, res, next) => {
 });
 
 // Get a goal's steps via its goal_id
-router.get('/steps/:goalId', checkAuth, (req, res, next) => {
+router.get('/steps/goal/:goalId', checkAuth, (req, res, next) => {
   knex('steps')
     .select('*')
     .where('goal_id', req.params.goalId)
@@ -35,7 +42,7 @@ router.get('/steps/:goalId', checkAuth, (req, res, next) => {
 
 // Save a step, with the step_name and goal_name
 router.post('/steps', checkAuth, (req, res, next) => {
-  const { stepName, goalName } = req.body;
+  const { stepName, goalName, userId, completedAt } = req.body;
 
   knex('goals')
     .select('id')
@@ -44,7 +51,7 @@ router.post('/steps', checkAuth, (req, res, next) => {
       const goalId = goals[0].id;
 
       return knex('steps')
-        .insert(decamelizeKeys({ stepName, goalId }), '*');
+        .insert(decamelizeKeys({ stepName, goalId , userId, completedAt }), '*');
       })
     .then((steps) => {
       res.send(steps[0]);
@@ -52,6 +59,6 @@ router.post('/steps', checkAuth, (req, res, next) => {
     .catch((err) => {
       next(err);
     });
-    });
+});
 
 module.exports = router;
