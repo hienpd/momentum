@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Chart from 'chart.js';
 
-const ChartProgress = React.createClass({
+const ChartProductivity = React.createClass({
 
   paint(ctx) {
     new Chart(ctx, {
@@ -49,4 +49,4 @@ const ChartProgress = React.createClass({
   }
 });
 
-export default ChartProgress;
+export default ChartProductivity;

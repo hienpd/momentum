@@ -1,6 +1,8 @@
 import React from 'react';
 import Paper from 'material-ui/Paper';
-import ChartProgress from 'components/ChartProgress';
+import ChartProductivity from 'components/ChartProductivity';
+import axios from 'axios';
+import cookie from 'react-cookie';
 
 const Dashboard = React.createClass({
   getInitialState() {
@@ -9,6 +11,14 @@ const Dashboard = React.createClass({
     }
   },
 
+  // componentWillMount() {
+  //   let data;
+  //   const userId = cookie.load('userId');
+  //   console.log(userId);
+  //
+  //   axios.get(`/api/count/${userId}`)
+  // },
+
   render() {
     return <div>
       <h1>Dashboard</h1>
@@ -16,7 +26,7 @@ const Dashboard = React.createClass({
         <div className="dashboard-container">
           <h3 className="left-align">Productivity</h3>
           <div className="dashboard-chart">
-            <ChartProgress
+            <ChartProductivity
               progress={this.state.progress}
             />
           </div>
