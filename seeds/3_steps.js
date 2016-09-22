@@ -30,18 +30,23 @@ exports.seed = function(knex) {
         id: 6,
         goal_id: 2,
         step_name: 'Reserve party room'
+        completed_at: new Date('2016-09-20 14:26:16 UTC')
+        user
       },{
         id: 7,
         goal_id: 2,
         step_name: 'Send invites'
+        completed_at: new Date('2016-09-21 14:26:16 UTC')
       },{
         id: 8,
         goal_id: 2,
         step_name: 'Make a playlist'
+        completed_at: new Date('2016-09-22 14:26:16 UTC')
       },{
         id: 9,
         goal_id: 2,
         step_name: 'Order pizza'
+        completed_at: new Date('2016-09-23 14:26:16 UTC')
       },{
         id: 10,
         goal_id: 2,
