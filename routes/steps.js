@@ -22,7 +22,12 @@ router.get('/steps/count/:username/:month', checkAuth, (req, res, next) => {
     })
     .then((completedSteps) => {
       console.log(completedSteps);
-      res.send(completedSteps.rows[0].count);
+      if (!completedSteps.rows[0]) {
+        res.send('0')
+      }
+      else {
+        res.send(completedSteps.rows[0].count);
+      }
     })
     .catch((err) => {
       next(err);
