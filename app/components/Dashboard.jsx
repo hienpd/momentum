@@ -7,7 +7,7 @@ import cookie from 'react-cookie';
 const Dashboard = React.createClass({
   getInitialState() {
     return {
-      progress: []
+      dataPoints: []
     }
   },
 
@@ -40,15 +40,16 @@ const Dashboard = React.createClass({
       return axios.get(`/api/steps/count/${username}/${currentYear}-${month}`);
     }))
       .then((results) => {
-        results.forEach((result) => {
-          dataPoints.push(result.data);
+        const dataPoints = results.map((result) => {
+          return result.data;
         });
+
+        this.setState({ dataPoints });
       })
       .catch((err) => {
         console.error(err);
       });
-
-    console.log(dataPoints);
+      console.log(dataPoints);
   },
 
   render() {
@@ -84,6 +85,7 @@ const Dashboard = React.createClass({
             <ChartProductivity
               progress={this.state.progress}
               months={monthsAxis}
+              data={this.state.dataPoints}
             />
           </div>
           <div className="dashboard-rows">

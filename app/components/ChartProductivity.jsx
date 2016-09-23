@@ -28,11 +28,15 @@ const ChartProductivity = React.createClass({
           pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
-          data: [10, 8, 9, 4, 3, 2, 6],
+          data: this.props.data,
           spanGaps: false,
         }]
       }
   })},
+
+  componentWillReceiveProps() {
+    // this.paint(ctx);
+  },
 
   componentDidMount() {
     const ctx = ReactDOM.findDOMNode(this).getContext('2d');
@@ -45,6 +49,7 @@ const ChartProductivity = React.createClass({
   },
 
   render() {
+    console.log(this.props.data);
     return <canvas></canvas>;
   }
 });
