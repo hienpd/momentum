@@ -7,19 +7,43 @@ import cookie from 'react-cookie';
 const Dashboard = React.createClass({
   getInitialState() {
     return {
-      progress: [1, 2, 3]
+      progress: []
     }
   },
 
-  // componentWillMount() {
-  //   let data;
-  //   const userId = cookie.load('userId');
-  //   console.log(userId);
-  //
-  //   axios.get(`/api/count/${userId}`)
-  // },
+  componentWillMount() {
+    let data;
+    const userId = cookie.load('userId');
+    console.log(userId);
+
+
+    axios.get(`/api/count/${userId}`)
+  },
 
   render() {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth();
+
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
+    ];
+
+    const monthsAxis = months.filter(function(month, index) {
+      return index <= currentMonth;
+    });
+
     return <div>
       <h1>Dashboard</h1>
       <Paper className="paper-container padding-sides">
@@ -28,6 +52,7 @@ const Dashboard = React.createClass({
           <div className="dashboard-chart">
             <ChartProductivity
               progress={this.state.progress}
+              months={monthsAxis}
             />
           </div>
           <div className="dashboard-rows">

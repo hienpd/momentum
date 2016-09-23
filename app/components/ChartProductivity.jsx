@@ -8,7 +8,7 @@ const ChartProductivity = React.createClass({
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: this.props.months,
         datasets: [{
           label: "Number of Steps Accomplished",
           fill: false,
