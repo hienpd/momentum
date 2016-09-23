@@ -16,7 +16,7 @@ exports.up = function(knex) {
       .inTable('users')
       .onDelete('SET NULL')
       .index();
-    table.timestamp('completed_at');
+    table.timestamp('completed_at').nullable();
     table.timestamps(true, true);
   });
 };
