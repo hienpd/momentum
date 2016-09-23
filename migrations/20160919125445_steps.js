@@ -16,7 +16,7 @@ exports.up = function(knex) {
       .inTable('users')
       .onDelete('SET NULL')
       .index();
-    table.timestamp('completed_at').nullable().defaultTo('1970-01-01 ');
+    table.timestamp('completed_at').nullable().defaultTo('1970-01-01');
     table.timestamps(true, true);
   });
 };

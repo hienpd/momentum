@@ -292,7 +292,6 @@ li > a:active {
 .dashboard-chart {
   height: 400px;
   width: 800px;
-  background-color: #F4F1BB;
   margin-bottom: 20px;
 }
 
@@ -300,8 +299,6 @@ li > a:active {
   height: 200px;
   width: 400px;
   margin: 10px;
-  background-color: orange;
-
 }
 
 .goal-details {
