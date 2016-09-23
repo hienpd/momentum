@@ -12,12 +12,31 @@ const Dashboard = React.createClass({
   },
 
   componentWillMount() {
-    let data;
-    const userId = cookie.load('userId');
-    console.log(userId);
+    let dataPoints = [];
+    let queryString = '';
 
+    const username = cookie.load('momentum_username');
 
-    axios.get(`/api/count/${userId}`)
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const MM = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+
+    for (let i = 0; i < MM.length; i++) {
+      axios.get(`/api/steps/count/${username}/${currentYear}-${MM[i]}`)
+        .then((result) => {
+          if (result === null) {
+            dataPoints.push(0);
+          }
+          else {
+            dataPoints.push(result.data);
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    };
+
+    console.log(dataPoints);
   },
 
   render() {

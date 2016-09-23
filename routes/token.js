@@ -47,6 +47,11 @@ router.post('/token', (req, res, next) => {
         secure: router.get('env') === 'production'
       });
 
+      res.cookie('momentum_userId', user.id, {
+        expires: expiry,
+        secure: router.get('env') === 'production'
+      });
+
       res.sendStatus(200);
     })
     .catch(bcrypt.MISMATCH_ERROR, () => {
