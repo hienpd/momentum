@@ -36,7 +36,8 @@ const ChartProductivity = React.createClass({
         scales: {
           yAxes: [{
             ticks: {
-              beginAtZero:true
+              beginAtZero: true,
+              fixedStepSize: 1
             }
           }]
         }
@@ -55,7 +56,6 @@ const ChartProductivity = React.createClass({
   },
 
   render() {
-    console.log('this.props.data', this.props.data);
     return <canvas></canvas>;
   }
 });

@@ -35,7 +35,6 @@ const Dashboard = React.createClass({
       .catch((err) => {
         console.error(err);
       });
-      console.log('data points', dataPoints);
   },
 
   render() {
@@ -66,7 +65,7 @@ const Dashboard = React.createClass({
       <h1>Dashboard</h1>
       <Paper className="paper-container padding-sides">
         <div className="dashboard-container">
-          <h3 className="left-align">Your Productivity So Far This Year</h3>
+          <h3 className="left-align">Your Productivity So Far for {currentYear}</h3>
           <div className="dashboard-chart">
             <ChartProductivity
               progress={this.state.progress}
