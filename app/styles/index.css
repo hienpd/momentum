@@ -267,12 +267,6 @@ li > a:active {
   padding-right: 20px;
 }
 
-#dashboard-chart {
-  width: 800px;
-  height: 400px;
-  margin: 20px;
-}
-
 .dashboard-container {
   display: flex;
   flex-direction: column;
@@ -291,8 +285,8 @@ li > a:active {
 
 .dashboard-chart {
   height: 400px;
-  width: 800px;
-  margin-bottom: 20px;
+  width: 900px;
+  margin-bottom: 60px;
 }
 
 .dashboard-goal {

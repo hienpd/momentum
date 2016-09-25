@@ -10,7 +10,7 @@ const ChartProductivity = React.createClass({
       data: {
         labels: this.props.months,
         datasets: [{
-          label: "Number of Steps Accomplished",
+          label: "Number of Steps",
           fill: false,
           lineTension: 0.1,
           backgroundColor: "rgba(75,192,192,0.4)",
@@ -31,11 +31,17 @@ const ChartProductivity = React.createClass({
           data: this.props.data,
           spanGaps: false,
         }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero:true
+            }
+          }]
+        }
       }
-  })},
-
-  componentWillReceiveProps() {
-    // this.paint(ctx);
+    })
   },
 
   componentDidMount() {
@@ -49,7 +55,7 @@ const ChartProductivity = React.createClass({
   },
 
   render() {
-    console.log(this.props.data);
+    console.log('this.props.data', this.props.data);
     return <canvas></canvas>;
   }
 });

@@ -19,22 +19,8 @@ const Dashboard = React.createClass({
 
     const today = new Date();
     const currentYear = today.getFullYear();
+    const currentMonth = today.getMonth();
     const MM = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-
-    // for (let i = 0; i < MM.length; i++) {
-    //   axios.get(`/api/steps/count/${username}/${currentYear}-${MM[i]}`)
-    //     .then((result) => {
-    //       if (result.data === null) {
-    //         dataPoints.push(0);
-    //       }
-    //       else {
-    //         dataPoints.push(result.data);
-    //       }
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    // };
 
     Promise.all(MM.map((month) => {
       return axios.get(`/api/steps/count/${username}/${currentYear}-${month}`);
@@ -43,13 +29,13 @@ const Dashboard = React.createClass({
         const dataPoints = results.map((result) => {
           return result.data;
         });
-
+        dataPoints.splice((currentMonth + 1), (11 - currentMonth));
         this.setState({ dataPoints });
       })
       .catch((err) => {
         console.error(err);
       });
-      console.log(dataPoints);
+      console.log('data points', dataPoints);
   },
 
   render() {
