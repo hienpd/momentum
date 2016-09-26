@@ -8,7 +8,9 @@ import React from 'react';
 const Dashboard = React.createClass({
   getInitialState() {
     return {
-      dataPoints: []
+      dataPoints: [],
+      quoteText: '',
+      quoteAuthor: ''
     }
   },
 
@@ -26,16 +28,25 @@ const Dashboard = React.createClass({
     Promise.all(MM.map((month) => {
       return axios.get(`/api/steps/count/${username}/${currentYear}-${month}`);
     }))
-      .then((results) => {
-        const dataPoints = results.map((result) => {
-          return result.data;
-        });
-        dataPoints.splice((currentMonth + 1), (11 - currentMonth));
-        this.setState({ dataPoints });
-      })
-      .catch((err) => {
-        console.error(err);
+    .then((results) => {
+      const dataPoints = results.map((result) => {
+        return result.data;
       });
+      dataPoints.splice((currentMonth + 1), (11 - currentMonth));
+      this.setState({ dataPoints });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+
+    axios.get('http://cors-anywhere.herokuapp.com/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')
+    .then((res) => {
+      let { quoteText, quoteAuthor } = res.data;
+      this.setState({ quoteText, quoteAuthor });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
   },
 
   render() {
@@ -94,6 +105,9 @@ const Dashboard = React.createClass({
           </div>
         </div>
       </Paper>
+      <div id="quote">
+        <span>{this.state.quoteText} - {this.state.quoteAuthor}</span>
+      </div>
     </div>;
   }
 });

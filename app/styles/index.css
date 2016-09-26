@@ -317,3 +317,11 @@ li > a:active {
 .left-align {
   align-self: flex-start;
 }
+
+#quote {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-style: italic;
+  color: #546673;
+}
