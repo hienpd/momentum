@@ -44,18 +44,18 @@ const Dashboard = React.createClass({
     const currentMonth = today.getMonth();
 
     const months = [
-      'January',
-      'February',
-      'March',
-      'April',
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
       'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
     ];
 
     const monthsAxis = months.filter(function(month, index) {
@@ -66,25 +66,26 @@ const Dashboard = React.createClass({
       <h1>Dashboard</h1>
       <Paper className="paper-container padding-sides">
         <div className="dashboard-container">
-          <h3 className="left-align">Your Productivity So Far for {currentYear}</h3>
           <div className="dashboard-chart">
+            <h2>Your Productivity So Far for {currentYear}</h2>
             <ChartProductivity
               progress={this.state.progress}
               months={monthsAxis}
               data={this.state.dataPoints}
             />
           </div>
-          <div className="dashboard-rows">
+          <div className="dashboard-goals">
+            <h2>Your Goals</h2>
             <div className="dashboard-goal">
               <div className="goal-details">
-                <h1>Write a book</h1>
+                <h3>Write a book</h3>
                 <p>Next step: Revise first draft</p>
               </div>
               <ChartProgress />
             </div>
             <div className="dashboard-goal">
             <div className="goal-details">
-              <h1>Plan party</h1>
+              <h3>Plan party</h3>
               <p>With: Dan</p>
               <p>Next step: Buy balloons</p>
             </div>

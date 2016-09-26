@@ -269,39 +269,44 @@ li > a:active {
 
 .dashboard-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;;
   width: 100%;
   height: 100%;
-  padding: 20px;
-  margin: 10px;
 }
 
 .dashboard-chart {
-  height: 400px;
-  width: 900px;
+  width: 60%;
+  height: 100%;
   margin-bottom: 60px;
+  padding: 20px;
 }
 
-.dashboard-rows {
+.dashboard-goals {
+  width: 40%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width: 100%;
-  height: 250px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
 }
 
 .dashboard-goal {
-  height: 100%;
-  width: 50%;
-  margin: 10px;
+  padding: 10px;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-top: solid;
+  border-color: #E6EBE0;
+  border-width: thin;
 }
 
 .goal-details {
-  width: 325px;
-  height: 100%;
+  height: 125px;
+  padding: 10px;
 }
 
 .goal-progress {
