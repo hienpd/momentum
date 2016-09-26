@@ -5,6 +5,29 @@ import cookie from 'react-cookie';
 import Paper from 'material-ui/Paper';
 import React from 'react';
 
+const today = new Date();
+const currentYear = today.getFullYear();
+const currentMonth = today.getMonth();
+
+const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec'
+];
+
+const monthsAxis = months.filter(function(month, index) {
+  return index <= currentMonth;
+});
+
 const Dashboard = React.createClass({
   getInitialState() {
     return {
@@ -50,29 +73,6 @@ const Dashboard = React.createClass({
   },
 
   render() {
-    const today = new Date();
-    const currentYear = today.getFullYear();
-    const currentMonth = today.getMonth();
-
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec'
-    ];
-
-    const monthsAxis = months.filter(function(month, index) {
-      return index <= currentMonth;
-    });
-
     return <div>
       <h1>Dashboard</h1>
       <Paper className="paper-container padding-sides">
