@@ -277,32 +277,36 @@ li > a:active {
   margin: 10px;
 }
 
-.dashboard-rows {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
 .dashboard-chart {
   height: 400px;
   width: 900px;
   margin-bottom: 60px;
 }
 
+.dashboard-rows {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 250px;
+}
+
 .dashboard-goal {
-  height: 200px;
-  width: 400px;
+  height: 100%;
+  width: 50%;
   margin: 10px;
+  display: flex;
+  flex-direction: row;
 }
 
 .goal-details {
-  width: 75%;
+  width: 325px;
   height: 100%;
 }
 
 .goal-progress {
-  width: 25%;
-  height: 100%;
+  width: 100px;
+  height: 100px;
 }
 
 .left-align {

@@ -1,8 +1,9 @@
-import React from 'react';
-import Paper from 'material-ui/Paper';
-import ChartProductivity from 'components/ChartProductivity';
 import axios from 'axios';
+import ChartProductivity from 'components/ChartProductivity';
+import ChartProgress from 'components/ChartProgress';
 import cookie from 'react-cookie';
+import Paper from 'material-ui/Paper';
+import React from 'react';
 
 const Dashboard = React.createClass({
   getInitialState() {
@@ -75,19 +76,19 @@ const Dashboard = React.createClass({
           </div>
           <div className="dashboard-rows">
             <div className="dashboard-goal">
-              <div className="goal-details padding-sides">
+              <div className="goal-details">
                 <h1>Write a book</h1>
                 <p>Next step: Revise first draft</p>
               </div>
-              <div className="goal-progress"></div>
+              <ChartProgress />
             </div>
             <div className="dashboard-goal">
-            <div className="goal-details padding-sides">
+            <div className="goal-details">
               <h1>Plan party</h1>
               <p>With: Dan</p>
               <p>Next step: Buy balloons</p>
             </div>
-            <div className="goal-progress"></div>
+            <ChartProgress />
             </div>
           </div>
         </div>
