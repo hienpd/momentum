@@ -33,8 +33,7 @@ router.post('/categories_goals', checkAuth, (req, res, next) => {
       const userId = users[0].id;
       const row = {
         goalId: req.body.goalId,
-        categoryId: req.body.categoryId,
-        userId
+        categoryId: req.body.categoryId
       };
 
       return knex('categories_goals')

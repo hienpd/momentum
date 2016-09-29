@@ -26,7 +26,8 @@ router.get('/goals_users/goal_id/:goalId', checkAuth, (req, res, next) => {
 router.get('/goals_users/username/:username', checkAuth, (req, res, next) => {
   knex('goals_users')
     .join('users', 'users.id', '=', 'goals_users.user_id')
-    .select('goal_id')
+    .join('goals', 'goals.id', '=', 'goals_users.goal_id')
+    .select('goal_name')
     .where('username', req.params.username)
     .then((goals) => {
       res.send(goals);
