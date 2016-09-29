@@ -9,7 +9,7 @@ const { decamelizeKeys } = require('humps');
 const router = express.Router();
 
 // Get users with goal_id
-router.get('/goals_users/goal_id/:goalId', (req, res, next) => {
+router.get('/goals_users/goal_id/:goalId', checkAuth, (req, res, next) => {
   knex('goals_users')
     .select('users.username')
     .join('users', 'users.id', '=', 'goals_users.user_id')
@@ -23,7 +23,7 @@ router.get('/goals_users/goal_id/:goalId', (req, res, next) => {
 });
 
 // Get goals with username
-router.get('/goals_users/username/:username', (req, res, next) => {
+router.get('/goals_users/username/:username', checkAuth, (req, res, next) => {
   knex('goals_users')
     .join('users', 'users.id', '=', 'goals_users.user_id')
     .select('goal_id')
