@@ -9,7 +9,7 @@ exports.seed = function(knex) {
         category: 'fitness'
       },{
         id: 2,
-        category: 'career'
+        category: 'financial'
       }]);
     })
     .then(() => {

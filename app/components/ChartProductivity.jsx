@@ -5,7 +5,6 @@ import Chart from 'chart.js';
 let chart = null;
 
 const ChartProductivity = React.createClass({
-
   paint(ctx) {
     if (chart) {
       return;
@@ -50,11 +49,6 @@ const ChartProductivity = React.createClass({
       }
     })
   },
-
-  // componentDidMount() {
-  //   const ctx = ReactDOM.findDOMNode(this).getContext('2d');
-  //   this.paint(ctx);
-  // },
 
   componentDidUpdate() {
     const canvas = ReactDOM.findDOMNode(this);

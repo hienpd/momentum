@@ -6,16 +6,24 @@ exports.seed = function(knex) {
     .then(() => {
       return knex('categories_goals').insert([{
         id: 1,
-        user_id: 1,
-        goal_id: 1,
+        goal_id: 2,
+        category_id: 1
       },{
         id: 2,
-        user_id: 1,
-        goal_id: 2
+        goal_id: 2,
+        category_id: 2,
       },{
         id: 3,
-        user_id: 2,
-        goal_id: 2
+        goal_id: 3,
+        category_id: 1
+      },{
+        id: 4,
+        goal_id: 4,
+        category_id: 2
+      },{
+        id: 5,
+        goal_id: 5,
+        category_id: 1
       }]);
     })
     .then(() => {
