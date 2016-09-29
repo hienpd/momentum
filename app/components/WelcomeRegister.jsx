@@ -38,8 +38,6 @@ const WelcomeRegister = React.createClass({
       inputs.confirmPassword = this.state.confirmPassword;
     }
 
-    console.log(inputs);
-
     const result = Joi.validate(inputs, schema);
 
     if (result.error) {
@@ -105,7 +103,6 @@ const WelcomeRegister = React.createClass({
       lastName: this.state.lastName
     }))
     .then(() => {
-      console.log('Huzzah!');
     })
     .catch((err) => {
       // eslint-disable-next-line no-console

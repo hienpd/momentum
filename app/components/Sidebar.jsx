@@ -4,12 +4,27 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import Popover from 'material-ui/Popover';
 import React from 'react';
+import cookie from 'react-cookie';
 
 const Sidebar = React.createClass({
   getInitialState() {
     return this.state = {
-      open: false
+      open: false,
+      goals: []
     };
+  },
+
+  componentWillMount() {
+    console.log('hello');
+    const username = cookie.load('momentum_username');
+
+    axios.get(`/api/goals/${username}`)
+      .then((results) => {
+        this.setState({ goals: results.data })
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   },
 
   handleAvatarClick() {
@@ -111,8 +126,9 @@ const Sidebar = React.createClass({
             </a>
           </li>
           <ul id="sidebar-goals">
-            <li><a href="#">Sample goal 1</a></li>
-            <li><a href="#">Sample goal 2</a></li>
+            {this.state.goals.map((goal, index) => {
+              return <li key={index}><a href="">{goal.goal_name}</a></li>;
+            })}
           </ul>
         </ul>
       </nav>

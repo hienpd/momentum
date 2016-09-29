@@ -5,7 +5,6 @@ import Sidebar from 'components/Sidebar';
 import Dashboard from 'components/Dashboard';
 import Goal from 'components/Goal';
 import NewGoal from 'components/NewGoal';
-import Friends from 'components/Friends';
 import Settings from 'components/Settings';
 
 const Routes = React.createClass({
@@ -16,7 +15,6 @@ const Routes = React.createClass({
         <IndexRoute component={Dashboard} />
         <Route component={Goal} path="goal/1" />
         <Route component={NewGoal} path="newgoal" />
-        <Route component={Friends} path="friends" />
         <Route component={Settings} path="settings" />
       </Route>
     </Router>;

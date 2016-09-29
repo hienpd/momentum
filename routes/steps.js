@@ -21,7 +21,6 @@ router.get('/steps/count/:username/:month', checkAuth, (req, res, next) => {
       return knex.raw(`select * from (select count(*), date_trunc( 'month', completed_at ) from steps where user_id = ${response.id} group by date_trunc( 'month', completed_at )) as foo where date_trunc = '${month}-01'`)
     })
     .then((completedSteps) => {
-      console.log(completedSteps);
       if (!completedSteps.rows[0]) {
         res.send('0')
       }

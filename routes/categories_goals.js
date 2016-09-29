@@ -16,7 +16,6 @@ router.get('/categories/:goalId', checkAuth, (req, res, next) => {
     .where('goal_id', goalId)
     .join('categories', 'categories.id', '=', 'categories_goals.category_id')
     .then((result) => {
-      console.log(result);
       res.send(result);
     })
     .catch((err) => {
