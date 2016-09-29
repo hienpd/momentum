@@ -33,10 +33,6 @@ const Sidebar = React.createClass({
     this.props.router.push('/app/newgoal');
   },
 
-  handleGoToFriends() {
-    this.props.router.push('/app/friends');
-  },
-
   handleGoToDashboard() {
     this.props.router.push('/app');
   },
@@ -89,7 +85,23 @@ const Sidebar = React.createClass({
               </div>
               Dashboard
             </a>
-            </li>
+          </li>
+          <li>
+            <a href="#" onClick={this.handleGoToSettings}>
+            <div className="icon-box">
+              <i className="fa fa-cogs fa-lg" aria-hidden="true"></i>
+              </div>
+              Settings
+            </a>
+          </li>
+          <li>
+            <a href="#" onClick={this.handleGoToNewGoal}>
+              <div className="icon-box">
+                <i className="fa fa-plus fa-lg" aria-hidden="true"></i>
+              </div>
+              Set a New Goal
+            </a>
+          </li>
           <li>
             <a href="#">
               <div className="icon-box">
@@ -102,30 +114,6 @@ const Sidebar = React.createClass({
             <li><a href="#">Sample goal 1</a></li>
             <li><a href="#">Sample goal 2</a></li>
           </ul>
-          <li>
-            <a href="#" onClick={this.handleGoToNewGoal}>
-              <div className="icon-box">
-                <i className="fa fa-plus fa-lg" aria-hidden="true"></i>
-              </div>
-              Set a New Goal
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={this.handleGoToFriends}>
-              <div className="icon-box">
-                <i className="fa fa-users fa-lf" aria-hidden="true"></i>
-              </div>
-              Friends
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={this.handleGoToSettings}>
-            <div className="icon-box">
-              <i className="fa fa-cogs fa-lg" aria-hidden="true"></i>
-              </div>
-              Settings
-            </a>
-          </li>
         </ul>
       </nav>
       <main>
