@@ -9,7 +9,16 @@ exports.seed = function(knex) {
         goal_name: 'Write a book'
       },{
         id: 2,
-        goal_name: 'Plan a party'
+        goal_name: 'Bring lunch from home'
+      },{
+        id: 3,
+        goal_name: 'Run a marathon'
+      },{
+        id: 4,
+        goal_name: 'Pay off student loans'
+      },{
+        id: 5,
+        goal_name: 'Dunk a basketball'
       }]);
     })
     .then(() => {

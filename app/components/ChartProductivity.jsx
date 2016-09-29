@@ -2,10 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Chart from 'chart.js';
 
+let chart = null;
+
 const ChartProductivity = React.createClass({
 
   paint(ctx) {
-    new Chart(ctx, {
+    if (chart) {
+      return;
+    }
+
+    chart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: this.props.months,
@@ -45,13 +51,15 @@ const ChartProductivity = React.createClass({
     })
   },
 
-  componentDidMount() {
-    const ctx = ReactDOM.findDOMNode(this).getContext('2d');
-    this.paint(ctx);
-  },
+  // componentDidMount() {
+  //   const ctx = ReactDOM.findDOMNode(this).getContext('2d');
+  //   this.paint(ctx);
+  // },
 
   componentDidUpdate() {
-    const ctx = ReactDOM.findDOMNode(this).getContext('2d');
+    const canvas = ReactDOM.findDOMNode(this);
+    const ctx = canvas.getContext('2d');
+
     this.paint(ctx);
   },
 

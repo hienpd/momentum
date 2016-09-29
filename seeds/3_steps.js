@@ -14,43 +14,43 @@ exports.seed = function(knex) {
         id: 2,
         goal_id: 1,
         step_name: 'Create character bible',
-        completed_at: '2016-01-05 10:23:54-08',
+        completed_at: '2016-02-05 10:23:54-08',
         user_id: 1
       },{
         id: 3,
         goal_id: 1,
         step_name: 'Outline story',
-        completed_at: '2016-01-06 10:23:54-08',
+        completed_at: '2016-03-06 10:23:54-08',
         user_id: 1
       },{
         id: 4,
         goal_id: 1,
         step_name: 'Revise draft',
-        completed_at: '2016-02-19 10:23:54-08',
+        completed_at: '2016-04-19 10:23:54-08',
         user_id: 1
       },{
         id: 5,
         goal_id: 1,
         step_name: 'Find editor',
-        completed_at: '2016-02-19 10:23:54-08',
+        completed_at: '2016-05-19 10:23:54-08',
         user_id: 1
       },{
         id: 6,
         goal_id: 1,
         step_name: 'Do a structural edit',
-        completed_at: '2016-03-01 10:23:54-08',
+        completed_at: '2016-06-01 10:23:54-08',
         user_id: 1
       },{
         id: 7,
         goal_id: 1,
         step_name: 'Workshop draft',
-        completed_at: '2016-03-10 10:23:54-08',
+        completed_at: '2016-07-10 10:23:54-08',
         user_id: 1
       },{
         id: 8,
         goal_id: 1,
         step_name: 'Line edit',
-        completed_at: '2016-04-19 10:23:54-08',
+        completed_at: '2016-08-19 10:23:54-08',
         user_id: 1
       },{
         id: 9,
@@ -63,62 +63,76 @@ exports.seed = function(knex) {
       },{
         id: 11,
         goal_id: 2,
-        step_name: 'Create guest list',
-        completed_at: '2016-05-10 10:23:54-08',
+        step_name: 'Make a plan for lunch',
+        completed_at: '2016-01-10 10:23:54-08',
         user_id: 1
       },{
         id: 12,
         goal_id: 2,
-        step_name: 'Reserve party room',
-        completed_at: '2016-05-11 10:23:54-08',
-        user_id: 2
+        step_name: 'Buy more tupperware',
+        completed_at: '2016-02-11 10:23:54-08',
+        user_id: 1
       },{
         id: 13,
         goal_id: 2,
-        step_name: 'Make shopping list',
-        completed_at: '2016-06-12 10:23:54-08',
-        user_id: 1
+        step_name: 'Make shopping list'
       },{
         id: 14,
         goal_id: 2,
-        step_name: 'Create playlist',
-        completed_at: '2016-07-13 10:23:54-08',
-        user_id: 2
+        step_name: 'Build up base mileage',
+        completed_at: '2016-01-13 10:23:54-08',
+        user_id: 1
       },{
         id: 15,
         goal_id: 2,
-        step_name: 'Make pigs in blankets',
-        completed_at: '2016-07-14 10:23:54-08',
+        step_name: 'Do a long run',
+        completed_at: '2016-02-14 10:23:54-08',
         user_id: 1
       },{
         id: 16,
         goal_id: 2,
-        step_name: 'Buy red plastic cups',
-        completed_at: '2016-08-01 10:23:54-08',
-        user_id: 2
+        step_name: 'Practice intervals'
       },{
         id: 17,
         goal_id: 2,
-        step_name: 'Send invites',
-        completed_at: '2016-08-02 10:23:54-08',
-        user_id: 1
+        step_name: 'Practice tempo run'
       },{
         id: 18,
         goal_id: 2,
-        step_name: 'Blow balloons',
-        completed_at: '2016-09-03 10:23:54-08',
-        user_id: 2
+        step_name: 'Run a marathon'
       },{
         id: 19,
         goal_id: 2,
-        step_name: 'Buy cake',
+        step_name: 'Consolidate loans',
         completed_at: '2016-09-04 10:23:54-08',
         user_id: 1
       },{
         id: 20,
         goal_id: 2,
-        step_name: 'Decorate',
-        completed_at: '2016-09-05 10:23:54-08',
+        step_name: 'Set automatic payment',
+        completed_at: '2016-06-12 10:23:54-08',
+        user_id: 1
+      },{
+        id: 21,
+        goal_id: 3,
+        step_name: 'Change repayment plan'
+      },{
+        id: 22,
+        goal_id: 5,
+        step_name: 'Buy a trampoline',
+        completed_at: '2016-06-12 10:23:54-08',
+        user_id: 2
+      },{
+        id: 23,
+        goal_id: 5,
+        step_name: 'Do a flip',
+        completed_at: '2016-06-12 10:23:54-08',
+        user_id: 2
+      },{
+        id: 24,
+        goal_id: 5,
+        step_name: 'Jump higher than 10 feet',
+        completed_at: '2016-06-12 10:23:54-08',
         user_id: 2
       }]);
     })

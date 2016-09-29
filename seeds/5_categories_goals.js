@@ -2,9 +2,9 @@
 'use strict';
 
 exports.seed = function(knex) {
-  return knex('goals_users').del()
+  return knex('categories_goals').del()
     .then(() => {
-      return knex('goals_users').insert([{
+      return knex('categories_goals').insert([{
         id: 1,
         user_id: 1,
         goal_id: 1,
@@ -14,21 +14,13 @@ exports.seed = function(knex) {
         goal_id: 2
       },{
         id: 3,
-        user_id: 1,
-        goal_id: 3
-      },{
-        id: 4,
-        user_id: 1,
-        goal_id: 4
-      },{
-        id: 5,
         user_id: 2,
-        goal_id: 5
+        goal_id: 2
       }]);
     })
     .then(() => {
       return knex.raw(
-        "SELECT setval('goals_users_id_seq', (SELECT MAX(id) FROM goals_users));"
+        "SELECT setval('categories_goals_id_seq', (SELECT MAX(id) FROM categories_goals));"
       );
     });
 };
