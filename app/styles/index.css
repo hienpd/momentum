@@ -164,7 +164,7 @@ nav {
 
 ul {
   list-style-type: none;
-  list-style-position: outside;
+  padding: 0;
 }
 
 #sidebar-nav {
@@ -180,8 +180,22 @@ li > a {
   align-items: center;
 }
 
+#sidebar-goals > li > a {
+  text-decoration: none;
+  display: block;
+  padding: 10px 10px 10px 25px;
+  display: flex;
+  align-items: center;
+  height: 30px;
+  background-color: #ED6A5A;
+}
+
 /* unvisited and visited link */
 li > a:link, li > a:visited {
+  color: #fff;
+}
+
+#sidebar-goals > li > a:link, #sidebar-goals > li > a:visited {
   color: #fff;
 }
 
@@ -190,9 +204,18 @@ li > a:hover {
   background-color: #9BC1BC;
 }
 
+#sidebar-goals > li > a:hover {
+  background-color: #F4F1BB;
+  color: #546673;
+}
+
 /* selected link */
 li > a:active {
   color: #F4F1BB;
+}
+
+#sidebar-goals > li > a:active {
+  color: #546673;
 }
 
 .icon-box {

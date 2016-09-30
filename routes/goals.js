@@ -23,8 +23,6 @@ router.get('/goals', (_req, res, next) => {
 // Get a goal's details
 router.get('/goals/goal_id/:goalId', checkAuth, (req, res, next) => {
   const { goalId } = req.params;
-  console.log(goalId);
-
   knex('goals')
     .where('id', parseInt(goalId))
     .then((goals) => {

@@ -27,7 +27,6 @@ const Goal = React.createClass({
   },
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.params.goalId);
     axios.get(`/api/goals/goal_id/${nextProps.params.goalId}`)
       .then((results) => {
         this.setState({goal: results.data});
