@@ -78,7 +78,7 @@ const Dashboard = React.createClass({
       <Paper className="paper-container padding-sides">
         <div className="dashboard-container">
           <div className="dashboard-chart">
-            <h2>Your Productivity So Far for {currentYear}</h2>
+            <h2 className="align-left">Your Productivity So Far for {currentYear}</h2>
             <ChartProductivity
               progress={this.state.progress}
               months={monthsAxis}
@@ -92,15 +92,15 @@ const Dashboard = React.createClass({
                 <h3>Write a book</h3>
                 <p>Next step: Revise first draft</p>
               </div>
-              <ChartProgress />
+              <ChartProgress height="100px" width="100px" fontSize="2em" />
             </div>
             <div className="dashboard-goal">
-            <div className="goal-details">
-              <h3>Plan party</h3>
-              <p>With: Dan</p>
-              <p>Next step: Buy balloons</p>
-            </div>
-            <ChartProgress />
+              <div className="goal-details">
+                <h3>Plan party</h3>
+                <p>With: Dan</p>
+                <p>Next step: Buy balloons</p>
+              </div>
+              <ChartProgress height="100px" width="100px" fontSize="2em" />
             </div>
           </div>
         </div>

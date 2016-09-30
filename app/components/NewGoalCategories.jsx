@@ -3,20 +3,20 @@ import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
 import TextField from 'material-ui/TextField';
 
-const NewGoalFriends = React.createClass({
+const NewGoalCategories = React.createClass({
   render() {
     return <Card
       className="padding"
       initiallyExpanded={false}
     >
       <CardHeader
-        title="Friends"
+        title="Categories"
         actAsExpander={true}
         showExpandableButton={true}
       />
       <CardText expandable={true}>
         <div className="container-rows">
-          <TextField floatingLabelText="Add a Friend" />
+          <TextField floatingLabelText="Add a Category" />
           <RaisedButton
             label="Add"
             primary={true}
@@ -28,4 +28,4 @@ const NewGoalFriends = React.createClass({
   }
 });
 
-export default NewGoalFriends;
+export default NewGoalCategories;

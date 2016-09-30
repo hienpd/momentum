@@ -1,5 +1,5 @@
 import NewGoalAdvanced from 'components/NewGoalAdvanced';
-import NewGoalFriends from 'components/NewGoalFriends';
+import NewGoalFriends from 'components/NewGoalCategories';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';

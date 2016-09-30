@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import ProgressBar from 'progressbar.js';
 
 const ChartProgress = React.createClass({
+
   makeCircle(container) {
     const bar = new ProgressBar.Circle(container, {
       color: '#FFEA82',
@@ -26,7 +27,7 @@ const ChartProgress = React.createClass({
     });
 
     bar.text.style.fontFamily = 'Source Sans Pro, Open Sans, sans-serif';
-    bar.text.style.fontSize = '2rem';
+    bar.text.style.fontSize = this.props.fontSize;
     bar.text.style.color = '#546673';
     bar.animate(0.8);
   },
@@ -37,7 +38,11 @@ const ChartProgress = React.createClass({
   },
 
   render() {
-    return <div className="goal-progress"></div>;
+    const stylez = {
+      height: this.props.height,
+      width: this.props.width
+    }
+    return <div style={stylez}></div>;
   }
 });
 

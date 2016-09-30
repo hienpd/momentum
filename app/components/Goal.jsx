@@ -1,8 +1,9 @@
-import React from 'react';
+import { withRouter } from 'react-router';
+import axios from 'axios';
+import ChartProgress from 'components/ChartProgress';
 import Checkbox from 'material-ui/Checkbox';
 import Paper from 'material-ui/Paper';
-import axios from 'axios';
-import { withRouter } from 'react-router';
+import React from 'react';
 
 const Goal = React.createClass({
   // this.props.updateProgress(stepsCompleted)
@@ -38,16 +39,21 @@ const Goal = React.createClass({
 
   render() {
     return <div>
-      <h1>Goal</h1>
-      <h2>{this.state.goal.goal_name}</h2>
-      <Paper className="paper-container">
-        <div className="paper-col">
-          <h2>Steps</h2>
-          <Checkbox checked={true} label="Step 1" />
-          <Checkbox label="Step 2" />
-          <Checkbox label="Step 3" />
-          <Checkbox label="Step 4" />
-          <Checkbox label="Step 5" />
+      <h1>{this.state.goal.goal_name}</h1>
+      <Paper className="paper-container padding-sides">
+        <div className="dashboard-container">
+          <div className="dashboard-chart">
+            <h2 className="align-left">Percentage Complete</h2>
+            <ChartProgress height="350px" width="350px" fontSize="5em" />
+          </div>
+          <div className="dashboard-goals">
+            <h2>Steps</h2>
+            <Checkbox checked={true} label="Step 1" />
+            <Checkbox label="Step 2" />
+            <Checkbox label="Step 3" />
+            <Checkbox label="Step 4" />
+            <Checkbox label="Step 5" />
+          </div>
         </div>
       </Paper>
     </div>;
