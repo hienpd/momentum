@@ -15,10 +15,9 @@ const Sidebar = React.createClass({
   },
 
   componentWillMount() {
-    console.log('hello');
     const username = cookie.load('momentum_username');
 
-    axios.get(`/api/goals/${username}`)
+    axios.get(`/api/goals/username/${username}`)
       .then((results) => {
         this.setState({ goals: results.data })
       })
@@ -127,7 +126,7 @@ const Sidebar = React.createClass({
           </li>
           <ul id="sidebar-goals">
             {this.state.goals.map((goal, index) => {
-              return <li key={index}><a href="">{goal.goal_name}</a></li>;
+              return <li key={index}><Link to={`/app/goal/${goal.goal_id}`}>{goal.goal_name}</Link></li>;
             })}
           </ul>
         </ul>

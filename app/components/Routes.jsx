@@ -13,9 +13,9 @@ const Routes = React.createClass({
       <Route component={Welcome} path="/" />
       <Route component={Sidebar} path="app">
         <IndexRoute component={Dashboard} />
-        <Route component={Goal} path="goal/1" />
-        <Route component={NewGoal} path="newgoal" />
         <Route component={Settings} path="settings" />
+        <Route component={NewGoal} path="newgoal" />
+        <Route component={Goal} path="goal/:goalId" />
       </Route>
     </Router>;
   }
