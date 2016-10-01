@@ -19,8 +19,17 @@ const Goal = React.createClass({
 
   componentWillMount() {
     axios.get(`/api/goals/goal_id/${this.props.params.goalId}`)
-      .then((results) => {
-        this.setState({goal: results.data});
+      .then((goalDetails) => {
+        this.setState({goal: goalDetails.data});
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    axios.get(`/api/steps/goal/${this.props.params.goalId}`)
+      .then((goalSteps) => {
+        console.log(goalSteps.data);
+        this.setState({steps: goalSteps.data});
       })
       .catch((err) => {
         console.error(err);
@@ -48,11 +57,9 @@ const Goal = React.createClass({
           </div>
           <div className="dashboard-goals">
             <h2>Steps</h2>
-            <Checkbox checked={true} label="Step 1" />
-            <Checkbox label="Step 2" />
-            <Checkbox label="Step 3" />
-            <Checkbox label="Step 4" />
-            <Checkbox label="Step 5" />
+            {this.state.steps.map((step) => {
+              return <Checkbox label={step.step_name} />
+            })}
           </div>
         </div>
       </Paper>
