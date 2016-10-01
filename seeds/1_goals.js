@@ -19,6 +19,9 @@ exports.seed = function(knex) {
       },{
         id: 5,
         goal_name: 'Dunk a basketball'
+      },{
+        id: 6,
+        goal_name: 'Backpack across Europe'
       }]);
     })
     .then(() => {

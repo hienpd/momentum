@@ -24,6 +24,10 @@ exports.seed = function(knex) {
         id: 5,
         user_id: 2,
         goal_id: 5
+      },{
+        id: 6,
+        user_id: 2,
+        goal_id: 6
       }]);
     })
     .then(() => {

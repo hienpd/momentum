@@ -19,6 +19,7 @@ const Sidebar = React.createClass({
 
     axios.get(`/api/goals/username/${username}`)
       .then((results) => {
+        console.log(results);
         this.setState({ goals: results.data })
       })
       .catch((err) => {
