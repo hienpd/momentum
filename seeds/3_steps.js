@@ -99,9 +99,7 @@ exports.seed = function(knex) {
       },{
         id: 18,
         goal_id: 3,
-        step_name: 'Run a marathon',
-        completed_at: '2016-08-04 10:23:54-08',
-        user_id: 1
+        step_name: 'Run a marathon'
       },{
         id: 19,
         goal_id: 4,

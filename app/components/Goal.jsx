@@ -46,6 +46,7 @@ const Goal = React.createClass({
 
     axios.get(`/api/steps/goal/${nextProps.params.goalId}`)
       .then((goalSteps) => {
+        console.log(goalSteps);
         this.setState({steps: goalSteps.data});
       })
       .catch((err) => {
@@ -65,7 +66,11 @@ const Goal = React.createClass({
           <div className="dashboard-goals">
             <h2>Steps</h2>
             {this.state.steps.map((step, index) => {
-              return <Checkbox key={index} label={step.step_name} />
+              return <Checkbox
+                checked={step.completed_at ? true : false}
+                key={index}
+                label={step.step_name}
+              />
             })}
           </div>
         </div>
