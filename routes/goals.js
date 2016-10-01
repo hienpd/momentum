@@ -3,7 +3,7 @@
 const { checkAuth } = require('../middleware');
 const express = require('express');
 const knex = require('../knex');
-const { decamelizeKeys } = require('humps');
+const { decamelizeKeys, camelizeKeys } = require('humps');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
@@ -26,7 +26,7 @@ router.get('/goals/goal_id/:goalId', checkAuth, (req, res, next) => {
   knex('goals')
     .where('id', parseInt(goalId))
     .then((goals) => {
-      res.send(goals[0]);
+      res.send(camelizeKeys(goals[0]));
     })
     .catch((err) => {
       next(err);

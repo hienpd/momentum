@@ -4,6 +4,7 @@ import ChartProgress from 'components/ChartProgress';
 import Checkbox from 'material-ui/Checkbox';
 import Paper from 'material-ui/Paper';
 import React from 'react';
+import Step from 'components/Step';
 
 const Goal = React.createClass({
   // this.props.updateProgress(stepsCompleted)
@@ -28,7 +29,10 @@ const Goal = React.createClass({
 
     axios.get(`/api/steps/goal/${this.props.params.goalId}`)
       .then((goalSteps) => {
-        this.setState({steps: goalSteps.data});
+        const sortedSteps = goalSteps.data.sort((a, b) => {
+          return a.id - b.id;
+        });
+        this.setState({steps: sortedSteps});
       })
       .catch((err) => {
         console.error(err);
@@ -46,8 +50,26 @@ const Goal = React.createClass({
 
     axios.get(`/api/steps/goal/${nextProps.params.goalId}`)
       .then((goalSteps) => {
-        console.log(goalSteps);
-        this.setState({steps: goalSteps.data});
+        const sortedSteps = goalSteps.data.sort((a, b) => {
+          return a.id - b.id;
+        });
+        this.setState({steps: sortedSteps});
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  },
+
+  updateStep(completedAt, step) {
+    axios.patch(`/api/steps/${step.id}`, {completedAt})
+      .then((results) => {
+        const nextSteps = this.state.steps.map((element) => {
+          if (step !== element) {
+            return element;
+          }
+          return results.data;
+        });
+        this.setState({ steps: nextSteps });
       })
       .catch((err) => {
         console.error(err);
@@ -56,7 +78,7 @@ const Goal = React.createClass({
 
   render() {
     return <div>
-      <h1>{this.state.goal.goal_name}</h1>
+      <h1>{this.state.goal.goalName}</h1>
       <Paper className="paper-container padding-sides">
         <div className="dashboard-container">
           <div className="dashboard-chart">
@@ -64,13 +86,13 @@ const Goal = React.createClass({
             <ChartProgress height="350px" width="350px" fontSize="5em" />
           </div>
           <div className="dashboard-goals">
-            <h2>Steps</h2>
+            <h2>Steps to {this.state.goal.goalName}</h2>
             {this.state.steps.map((step, index) => {
-              return <Checkbox
-                checked={step.completed_at ? true : false}
+              return <Step
+                step={step}
+                updateStep={this.updateStep}
                 key={index}
-                label={step.step_name}
-              />
+              />;
             })}
           </div>
         </div>

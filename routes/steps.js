@@ -3,7 +3,7 @@
 const { checkAuth } = require('../middleware');
 const express = require('express');
 const knex = require('../knex');
-const { decamelizeKeys } = require('humps');
+const { decamelizeKeys, camelizeKeys } = require('humps');
 
 // eslint-disable-next-line new-cap
 const router = express.Router();
@@ -39,7 +39,7 @@ router.get('/steps/goal/:goalId', checkAuth, (req, res, next) => {
     .select('*')
     .where('goal_id', req.params.goalId)
     .then((steps) => {
-      res.send(steps);
+      res.send(camelizeKeys(steps));
     })
     .catch((err) => {
       next(err);
@@ -66,5 +66,40 @@ router.post('/steps', checkAuth, (req, res, next) => {
       next(err);
     });
 });
+
+// Edit a step
+router.patch('/steps/:stepId', checkAuth, (req, res, next) => {
+  const id = Number.parseInt(req.params.stepId);
+
+  knex('steps')
+    .where('id', id)
+    .first()
+    .then((step) => {
+      console.log(step);
+      const { stepName, completedAt } = req.body;
+      const updateStep = {};
+
+      if (stepName) {
+        updateStep.stepName = stepName;
+      }
+
+      if (completedAt || completedAt === null) {
+        updateStep.completedAt = completedAt;
+      }
+
+      return knex('steps')
+        .update(decamelizeKeys(updateStep), '*')
+        .where('id', id)
+    })
+    .then((results) => {
+      const updatedStep = camelizeKeys(results[0]);
+
+      res.send(updatedStep);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 
 module.exports = router;
