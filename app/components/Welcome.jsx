@@ -12,7 +12,7 @@ const Welcome = React.createClass({
         <div>
           <span id="slogan">A Progress Tracker for Your Personal Goals</span>
         </div>
-        <div className="container-rows">
+        <div className="welcome-rows">
           <WelcomeTabs />
         </div>
       </div>

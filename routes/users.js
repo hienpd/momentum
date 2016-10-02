@@ -25,10 +25,7 @@ router.get('/users', (req, res, next) => {
 });
 
 router.post('/users', (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  const firstName = req.body.first_name;
-  const lastName = req.body.last_name;
+  const { username, password, firstName, lastName, avatarUrl } = req.body;
 
   knex('users').where('username', username)
     .then((users) => {
@@ -40,7 +37,7 @@ router.post('/users', (req, res, next) => {
     })
     .then((hashedPassword) => {
       return knex('users')
-        .insert(decamelizeKeys({ username, hashedPassword, firstName, lastName }));
+        .insert(decamelizeKeys({ username, hashedPassword, firstName, lastName, avatarUrl }));
     })
     .then(() => {
       res.sendStatus(200);
