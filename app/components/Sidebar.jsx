@@ -10,7 +10,8 @@ const Sidebar = React.createClass({
   getInitialState() {
     return this.state = {
       open: false,
-      goals: []
+      goals: [],
+      user: {}
     };
   },
 
@@ -19,7 +20,15 @@ const Sidebar = React.createClass({
 
     axios.get(`/api/goals/username/${username}`)
       .then((results) => {
-        this.setState({ goals: results.data })
+        this.setState({ goals: results.data });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    axios.get(`/api/users/${username}`)
+      .then((results) => {
+        this.setState({ user: results.data });
       })
       .catch((err) => {
         console.error(err);
@@ -63,15 +72,17 @@ const Sidebar = React.createClass({
   },
 
   render() {
+    const username = cookie.load('momentum_username');
+
     return <div className="container-sidebar-layout">
       <nav>
         <div id="user-box"
           onClick={this.handleAvatarClick}
         >
           <div id="avatar">
-            <img className="avatar-img" src="http://media1.onsugar.com/files/2014/03/18/945/n/1922153/2d024105f59c4684_thumb_temp_image10906271395178611/i/Kerry-Washington-Makeup-Tutorial.jpg" />
+            <img className="avatar-img" src={this.state.user.avatar_url} />
           </div>
-          <h1 id="username">kaydub</h1>
+          <h1 id="username">{username}</h1>
           <Popover
             open={this.state.open}
             anchorEl={this.state.anchorEl}

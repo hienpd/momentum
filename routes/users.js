@@ -12,18 +12,20 @@ const boom = require('boom');
 // const ev = require('express-validation');
 // const validations = require('../validations/users');
 
-router.get('/users', (req, res, next) => {
+// Get user's details
+router.get('/users/:username', (req, res, next) => {
   knex('users')
-    .select('username')
-    .orderBy('id')
-    .then((users) => {
-      res.send(users);
+    .where('username', req.params.username)
+    .first()
+    .then((user) => {
+      res.send(user);
     })
     .catch((err) => {
       next(err);
     });
 });
 
+// Register a new user
 router.post('/users', (req, res, next) => {
   const { username, password, firstName, lastName, avatarUrl } = req.body;
 
