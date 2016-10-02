@@ -4,6 +4,7 @@ import ChartProgress from 'components/ChartProgress';
 import cookie from 'react-cookie';
 import Paper from 'material-ui/Paper';
 import React from 'react';
+import { Link, withRouter } from 'react-router';
 
 const today = new Date();
 const currentYear = today.getFullYear();
@@ -33,7 +34,8 @@ const Dashboard = React.createClass({
     return {
       dataPoints: [],
       quoteText: '',
-      quoteAuthor: ''
+      quoteAuthor: '',
+      goals: []
     }
   },
 
@@ -51,25 +53,42 @@ const Dashboard = React.createClass({
     Promise.all(MM.map((month) => {
       return axios.get(`/api/steps/count/${username}/${currentYear}-${month}`);
     }))
-    .then((results) => {
-      const dataPoints = results.map((result) => {
-        return result.data;
+      .then((results) => {
+        const dataPoints = results.map((result) => {
+          return result.data;
+        });
+        dataPoints.splice((currentMonth + 1), (11 - currentMonth));
+        this.setState({ dataPoints });
+      })
+      .catch((err) => {
+        console.error(err);
       });
-      dataPoints.splice((currentMonth + 1), (11 - currentMonth));
-      this.setState({ dataPoints });
-    })
-    .catch((err) => {
-      console.error(err);
-    });
 
     axios.get('http://cors-anywhere.herokuapp.com/http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en')
-    .then((res) => {
-      let { quoteText, quoteAuthor } = res.data;
-      this.setState({ quoteText, quoteAuthor });
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+      .then((res) => {
+        let { quoteText, quoteAuthor } = res.data;
+        this.setState({ quoteText, quoteAuthor });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    axios.get(`/api/goals/username/${username}`)
+      .then((results) => {
+        console.log(results.data);
+        const arr = [];
+
+        for (let i = 0; i < 2; i++) {
+          if (results.data[i]) {
+            arr.push(results.data[i]);
+          }
+        }
+
+        this.setState({ goals: arr });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   },
 
   render() {
@@ -84,32 +103,30 @@ const Dashboard = React.createClass({
               months={monthsAxis}
               data={this.state.dataPoints}
             />
+            <div id="quote">
+              <span>{this.state.quoteText} - {this.state.quoteAuthor}</span>
+            </div>
           </div>
           <div className="dashboard-goals">
             <h2>Your Goals</h2>
-            <div className="dashboard-goal">
-              <div className="goal-details">
-                <h3>Write a book</h3>
-                <p>Next step: Revise first draft</p>
-              </div>
-              <ChartProgress height="100px" width="100px" fontSize="2em" />
-            </div>
-            <div className="dashboard-goal">
-              <div className="goal-details">
-                <h3>Plan party</h3>
-                <p>With: Dan</p>
-                <p>Next step: Buy balloons</p>
-              </div>
-              <ChartProgress height="100px" width="100px" fontSize="2em" />
-            </div>
+              {this.state.goals.map((goal, index) => {
+                return <div className="dashboard-goal" key={index}>
+                  <div className="goal-details">
+                    <h3>
+                      <Link to={`/app/goal/${goal.goal_id}`}>
+                        {goal.goal_name}
+                      </Link>
+                    </h3>
+                    <p>Next Step: Do something</p>
+                  </div>
+                  <ChartProgress height="100px" width="100px" fontSize="2em" />
+                </div>
+              })}
           </div>
         </div>
       </Paper>
-      <div id="quote">
-        <span>{this.state.quoteText} - {this.state.quoteAuthor}</span>
-      </div>
     </div>;
   }
 });
 
-export default Dashboard;
+export default withRouter(Dashboard);
