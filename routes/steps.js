@@ -75,7 +75,6 @@ router.patch('/steps/:stepId', checkAuth, (req, res, next) => {
     .where('id', id)
     .first()
     .then((step) => {
-      console.log(step);
       const { stepName, completedAt } = req.body;
       const updateStep = {};
 

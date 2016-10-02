@@ -1,7 +1,7 @@
-import React from 'react';
+// import ImageUpload from 'components/ImageUpload';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
-import ImageUpload from 'components/ImageUpload';
+import React from 'react';
 import TextField from 'material-ui/TextField';
 
 const Settings = React.createClass({
@@ -27,10 +27,15 @@ const Settings = React.createClass({
             defaultValue="Washington"
             fullWidth={true}
           />
+          <TextField
+            floatingLabelText="Avatar Image URL"
+            defaultValue=""
+            fullWidth={true}
+          />
         </div>
         <div className="paper-col">
-          <h3>Avatar</h3>
-          <ImageUpload />
+          {/* <h3>Avatar</h3>
+          <ImageUpload /> */}
           <div className="btn-container">
             <RaisedButton
               className="save-btn"

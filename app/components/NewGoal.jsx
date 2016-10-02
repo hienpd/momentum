@@ -1,5 +1,5 @@
 import NewGoalAdvanced from 'components/NewGoalAdvanced';
-import NewGoalFriends from 'components/NewGoalCategories';
+import NewGoalCategories from 'components/NewGoalCategories';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
@@ -30,8 +30,8 @@ const NewGoal = React.createClass({
         </div>
         <div className="paper-col">
           <h3>Optional Settings</h3>
-          <NewGoalFriends />
-          <NewGoalAdvanced />
+          <NewGoalCategories />
+          {/* <NewGoalAdvanced /> */}
           <div className="btn-container">
             <RaisedButton
               className="save-btn"
