@@ -35,7 +35,8 @@ const Dashboard = React.createClass({
       dataPoints: [],
       quoteText: '',
       quoteAuthor: '',
-      goals: []
+      goals: [],
+      steps: {}
     }
   },
 
@@ -73,23 +74,49 @@ const Dashboard = React.createClass({
         console.error(err);
       });
 
+    const goalsArr = [];
+    const nextSteps = {};
+
     axios.get(`/api/goals/username/${username}`)
       .then((results) => {
-        console.log(results.data);
-        const arr = [];
-
         for (let i = 0; i < 2; i++) {
           if (results.data[i]) {
-            arr.push(results.data[i]);
+            goalsArr.push(results.data[i]);
           }
         }
 
-        this.setState({ goals: arr });
+        return goalsArr;
+      })
+      .then((goalsArr) => {
+        const nextSteps = {};
+        const axiosCalls = [];
+
+        for (var i = 0; i < goalsArr.length; i++) {
+          axiosCalls.push(axios.get(`/api/steps/goal/${goalsArr[i].goal_id}`));
+        }
+
+        return axios.all(axiosCalls);
+      })
+      .then((steps) => {
+        for (var i = 0; i < steps.length; i++) {
+          const sortedSteps = steps[i].data.sort((a, b) => {
+            return a.id - b.id;
+          });
+
+          for (var j = 0; j < sortedSteps.length; j++) {
+            if (sortedSteps[j].completedAt === null) {
+              nextSteps[sortedSteps[j].goalId] = sortedSteps[j].stepName;
+              break;
+            }
+          }
+        }
+
+        this.setState({goals: goalsArr, steps: nextSteps});
       })
       .catch((err) => {
         console.error(err);
       });
-  },
+    },
 
   render() {
     return <div>
@@ -108,7 +135,7 @@ const Dashboard = React.createClass({
             </div>
           </div>
           <div className="dashboard-goals">
-            <h2>Your Goals</h2>
+            <h2>Your Top Goals</h2>
               {this.state.goals.map((goal, index) => {
                 return <div className="dashboard-goal" key={index}>
                   <div className="goal-details">
@@ -117,7 +144,7 @@ const Dashboard = React.createClass({
                         {goal.goal_name}
                       </Link>
                     </h3>
-                    <p>Next Step: Do something</p>
+                    <p><b>Next Step:</b> {this.state.steps[goal.goal_id]}</p>
                   </div>
                   <ChartProgress height="100px" width="100px" fontSize="2em" />
                 </div>

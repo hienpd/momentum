@@ -348,6 +348,7 @@ li > a:active {
 
 .goal-details {
   height: 125px;
+  width: 200px;
   padding: 10px;
 }
 
