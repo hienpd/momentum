@@ -9,8 +9,7 @@ const { decamelizeKeys, camelizeKeys } = require('humps');
 const router = express.Router();
 
 // Count rows that have completed_at containing a certain month
-// select * from (select count(*), date_trunc( 'day', created_at ) from steps group by date_trunc( 'day', created_at )) as foo where date_trunc = '2016-09-21';
-router.get('/steps/count/:username/:month', checkAuth, (req, res, next) => {
+router.get('/steps/countByMonth/:username/:month', checkAuth, (req, res, next) => {
   const { username, month } = req.params;
 
   knex('users')
@@ -22,11 +21,43 @@ router.get('/steps/count/:username/:month', checkAuth, (req, res, next) => {
     })
     .then((completedSteps) => {
       if (!completedSteps.rows[0]) {
-        res.send('0')
+        res.send('0');
       }
       else {
         res.send(completedSteps.rows[0].count);
       }
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+// Count how many steps have been completed within a goal
+router.get('/steps/countByGoal/:goalId', checkAuth, (req, res, next) => {
+  const { goalId } = req.params;
+
+  knex('steps')
+    .count('completed_at')
+    .where('goal_id', goalId)
+    .first()
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+// Count how many steps total within a goal
+router.get('/steps/countTotal/:goalId', checkAuth, (req, res, next) => {
+  const { goalId } = req.params;
+
+  knex('steps')
+    .count('*')
+    .where('goal_id', goalId)
+    .first()
+    .then((response) => {
+      res.send(response);
     })
     .catch((err) => {
       next(err);

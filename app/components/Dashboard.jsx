@@ -52,7 +52,7 @@ const Dashboard = React.createClass({
     const MM = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
     Promise.all(MM.map((month) => {
-      return axios.get(`/api/steps/count/${username}/${currentYear}-${month}`);
+      return axios.get(`/api/steps/countByMonth/${username}/${currentYear}-${month}`);
     }))
       .then((results) => {
         const dataPoints = results.map((result) => {
@@ -111,7 +111,10 @@ const Dashboard = React.createClass({
           }
         }
 
-        this.setState({goals: goalsArr, steps: nextSteps});
+        this.setState({
+          goals: goalsArr,
+          steps: nextSteps
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -146,7 +149,12 @@ const Dashboard = React.createClass({
                     </h3>
                     <p><b>Next Step:</b> {this.state.steps[goal.goal_id]}</p>
                   </div>
-                  <ChartProgress height="100px" width="100px" fontSize="2em" />
+                  <ChartProgress
+                    fontSize="2em"
+                    height="100px"
+                    width="100px"
+                    goalId={goal.goal_id}
+                  />
                 </div>
               })}
           </div>
