@@ -11,7 +11,9 @@ const Goal = React.createClass({
     return {
       stepsCompleted: null,
       steps: [],
-      goal: {}
+      goal: {
+        goalId: this.props.params.goalId
+      }
     };
   },
 
@@ -67,10 +69,13 @@ const Goal = React.createClass({
           return results.data;
         });
         this.setState({ steps: nextSteps });
+        window.location.reload();
       })
       .catch((err) => {
         console.error(err);
       });
+
+
   },
 
   render() {
@@ -84,7 +89,7 @@ const Goal = React.createClass({
               height="350px"
               width="350px"
               fontSize="5em"
-              goal={this.state.goal.goalId}
+              goalId={this.props.params.goalId}
             />
           </div>
           <div className="dashboard-goals">

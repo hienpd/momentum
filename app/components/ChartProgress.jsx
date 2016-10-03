@@ -61,7 +61,6 @@ const ChartProgress = React.createClass({
   },
 
   componentDidMount() {
-    console.log('did mount', this.state.percentage);
     const container = ReactDOM.findDOMNode(this);
     this.makeCircle(container);
   },
