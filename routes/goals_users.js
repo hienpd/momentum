@@ -37,14 +37,13 @@ router.get('/goals_users/username/:username', checkAuth, (req, res, next) => {
     });
 });
 
-// Save new row to goals_users, but find user_id first
+// Save new row to goals_users AND goals
 router.post('/goals_users', checkAuth, (req, res, next) => {
-  knex('users')
-    .select('id')
-    .where('username', req.body.username)
-    .then((users) => {
-      const userId = users[0].id;
-      const row = { goalId: req.body.goalId, userId };
+  knex('goals')
+    .insert(decamelizeKeys({ goalName: req.body.goalName }), '*')
+    .then((goals) => {
+      const goalId = goals[0].id;
+      const row = { goalId, userId: req.body.userId };
 
       return knex('goals_users')
         .insert(decamelizeKeys(row), '*');

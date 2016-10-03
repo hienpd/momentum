@@ -14,19 +14,23 @@ const NewGoal = React.createClass({
 
     return {
       goalName: '',
-      goalId: null,
       userId: userId,
       steps: []
     };
   },
 
+  handleChange(event) {
+    const goalName = event.target.value;
+    this.setState({ goalName });
+  },
+
   handleSubmit() {
-    axios.post('/api/goals', {
+    axios.post('/api/goals_users', {
       goalName: this.state.goalName,
-      goalId: this.state.goalId
+      userId: this.state.userId
     })
     .then(() => {
-
+      window.location.reload();
     })
     .catch((err) => {
       console.error(err);
@@ -42,6 +46,8 @@ const NewGoal = React.createClass({
           <TextField
             floatingLabelText="Goal Name"
             fullWidth={true}
+            onChange={this.handleChange}
+            value={this.state.goalName}
           />
           <div className="container-rows">
             <TextField
