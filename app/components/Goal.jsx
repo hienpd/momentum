@@ -7,9 +7,6 @@ import React from 'react';
 import Step from 'components/Step';
 
 const Goal = React.createClass({
-  // this.props.updateProgress(stepsCompleted)
-  // goalIndex.stepsCompleted = goalIndex.stepsCompleted + 1;
-
   getInitialState() {
     return {
       stepsCompleted: null,
@@ -83,7 +80,12 @@ const Goal = React.createClass({
         <div className="dashboard-container">
           <div className="dashboard-chart">
             <h2 className="align-left">Percentage Complete</h2>
-            <ChartProgress height="350px" width="350px" fontSize="5em" />
+            <ChartProgress
+              height="350px"
+              width="350px"
+              fontSize="5em"
+              goal={this.state.goal.goalId}
+            />
           </div>
           <div className="dashboard-goals">
             <h2>Steps to {this.state.goal.goalName}</h2>

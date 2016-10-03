@@ -25,6 +25,7 @@ const ChartProgress = React.createClass({
       .then((results) => {
         const newPercent = results.data.count / total;
         this.setState({ percentage: newPercent })
+        this.bar.animate(newPercent);
       })
       .catch((err) => {
         console.error(err);
@@ -32,7 +33,7 @@ const ChartProgress = React.createClass({
   },
 
   makeCircle(container) {
-    const bar = new ProgressBar.Circle(container, {
+    this.bar = new ProgressBar.Circle(container, {
       color: '#FFEA82',
       trailColor: '#eee',
       trailWidth: 1,
@@ -53,22 +54,22 @@ const ChartProgress = React.createClass({
       }
     });
 
-    bar.text.style.fontFamily = 'Source Sans Pro, Open Sans, sans-serif';
-    bar.text.style.fontSize = this.props.fontSize;
-    bar.text.style.color = '#546673';
-    bar.animate(this.state.percentage);
+    this.bar.text.style.fontFamily = 'Source Sans Pro, Open Sans, sans-serif';
+    this.bar.text.style.fontSize = this.props.fontSize;
+    this.bar.text.style.color = '#546673';
+    this.bar.animate(this.state.percentage);
   },
 
-  // componentDidMount() {
-  //   console.log('did mount', this.state.percentage);
-  //   const container = ReactDOM.findDOMNode(this);
-  //   this.makeCircle(container);
-  // },
-
-  componentDidUpdate() {
+  componentDidMount() {
+    console.log('did mount', this.state.percentage);
     const container = ReactDOM.findDOMNode(this);
     this.makeCircle(container);
   },
+
+  // componentDidUpdate() {
+  //   const container = ReactDOM.findDOMNode(this);
+  //   this.makeCircle(container);
+  // },
 
   render() {
     const stylez = {
