@@ -23,7 +23,7 @@ const ChartProgress = React.createClass({
 
     axios.get(`/api/steps/countByGoal/${goalId}`)
       .then((results) => {
-        const newPercent = results.data.count / total;
+        const newPercent = Number.parseInt(results.data.count) / total;
         this.setState({ percentage: newPercent })
       })
       // .catch((err) => {
