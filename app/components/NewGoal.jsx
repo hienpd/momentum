@@ -1,12 +1,16 @@
 import axios from 'axios';
 import cookie from 'react-cookie';
 import FontIcon from 'material-ui/FontIcon';
-import NewGoalAdvanced from 'components/NewGoalAdvanced';
+import { List, ListItem } from 'material-ui/List';
 import NewGoalCategories from 'components/NewGoalCategories';
 import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 import React from 'react';
+import Subheader from 'material-ui/Subheader';
 import TextField from 'material-ui/TextField';
+import ActionReorder from 'material-ui/svg-icons/action/reorder';
+
+const tempSteps = [];
 
 const NewGoal = React.createClass({
   getInitialState() {
@@ -15,13 +19,19 @@ const NewGoal = React.createClass({
     return {
       goalName: '',
       userId: userId,
-      steps: []
+      steps: [],
+      stepName: ''
     };
   },
 
-  handleChange(event) {
+  handleGoalChange(event) {
     const goalName = event.target.value;
     this.setState({ goalName });
+  },
+
+  handleStepChange(event) {
+    const stepName = event.target.value;
+    this.setState({ stepName });
   },
 
   handleSubmit() {
@@ -37,6 +47,12 @@ const NewGoal = React.createClass({
     })
   },
 
+  handleAddStep() {
+    console.log(tempSteps);
+    tempSteps.push(this.state.stepName);
+    this.setState({ steps: tempSteps, stepName: '' });
+  },
+
   render() {
     return <div>
       <h1>Set a New Goal</h1>
@@ -46,24 +62,41 @@ const NewGoal = React.createClass({
           <TextField
             floatingLabelText="Goal Name"
             fullWidth={true}
-            onChange={this.handleChange}
+            onChange={this.handleGoalChange}
             value={this.state.goalName}
           />
           <div className="container-rows">
             <TextField
               floatingLabelText="Add a Step"
+              onChange={this.handleStepChange}
+              value={this.state.stepName}
             />
             <RaisedButton
-              label="Add"
-              primary={true}
               className="left-margin"
+              label="Add"
+              onClick={this.handleAddStep}
+              primary={true}
             />
+          </div>
+          <div className="steps-list">
+            <Subheader></Subheader>
+            <Paper>
+              <List>
+                <Subheader>Steps for New Goal</Subheader>
+                {this.state.steps.map((step, index) => {
+                  return <ListItem
+                    key={index}
+                    leftIcon={<ActionReorder />}
+                    primaryText={step}
+                  />;
+                })}
+              </List>
+            </Paper>
           </div>
         </div>
         <div className="paper-col">
           <h3>Optional Settings</h3>
           <NewGoalCategories />
-          {/* <NewGoalAdvanced /> */}
           <div className="btn-container">
             <RaisedButton
               className="save-btn"

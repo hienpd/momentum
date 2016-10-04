@@ -155,7 +155,7 @@ const Dashboard = React.createClass({
                     width="100px"
                     goalId={goal.goal_id}
                   />
-                </div>
+                </div>;
               })}
           </div>
         </div>

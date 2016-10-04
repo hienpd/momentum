@@ -372,3 +372,7 @@ li > a:active {
 .goal-details > a:hover {
   text-decoration: none;
 }
+
+.steps-list {
+  margin: 25px 0;
+}
