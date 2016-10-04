@@ -13,7 +13,8 @@ const Goal = React.createClass({
       steps: [],
       goal: {
         goalId: this.props.params.goalId
-      }
+      },
+      nudge: 0
     };
   },
 
@@ -68,14 +69,12 @@ const Goal = React.createClass({
           }
           return results.data;
         });
-        this.setState({ steps: nextSteps });
-        window.location.reload();
+        this.setState({ steps: nextSteps, nudge: this.state.nudge + 1 });
+        // window.location.reload();
       })
       .catch((err) => {
         console.error(err);
       });
-
-
   },
 
   render() {
@@ -90,6 +89,7 @@ const Goal = React.createClass({
               width="350px"
               fontSize="5em"
               goalId={this.props.params.goalId}
+              nudge={this.state.nudge}
             />
           </div>
           <div className="dashboard-goals">

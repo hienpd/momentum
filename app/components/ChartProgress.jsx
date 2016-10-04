@@ -25,11 +25,16 @@ const ChartProgress = React.createClass({
       .then((results) => {
         const newPercent = results.data.count / total;
         this.setState({ percentage: newPercent })
-        this.bar.animate(newPercent);
       })
       .catch((err) => {
         console.error(err);
       });
+  },
+
+  componentWillReceiveProps(nextProps) {
+   if (this.props.nudge !== nextProps.nudge) {
+     this.componentWillMount();
+   }
   },
 
   makeCircle(container) {
@@ -57,18 +62,17 @@ const ChartProgress = React.createClass({
     this.bar.text.style.fontFamily = 'Source Sans Pro, Open Sans, sans-serif';
     this.bar.text.style.fontSize = this.props.fontSize;
     this.bar.text.style.color = '#546673';
-    this.bar.animate(this.state.percentage);
   },
 
   componentDidMount() {
     const container = ReactDOM.findDOMNode(this);
     this.makeCircle(container);
+    this.bar.animate(this.state.percentage);
   },
 
-  // componentDidUpdate() {
-  //   const container = ReactDOM.findDOMNode(this);
-  //   this.makeCircle(container);
-  // },
+  componentDidUpdate() {
+    this.bar.animate(this.state.percentage);
+  },
 
   render() {
     const stylez = {
