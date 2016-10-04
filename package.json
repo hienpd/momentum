@@ -13,7 +13,7 @@
     "lint": "eslint --ext .js,.jsx --ignore-pattern public",
     "start": "brunch watch --server",
     "knex": "knex",
-    "heroku-postbuild": "knex migrate:latest",
+    "heroku-postbuild": "knex migrate:latest; brunch build --production",
     "nf": "nf start"
   },
   "dependencies": {
