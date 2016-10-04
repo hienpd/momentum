@@ -10,10 +10,10 @@ const ChartProgress = React.createClass({
     }
   },
 
-  componentWillMount() {
+  computePercentage(goalId) {
     let total;
 
-    axios.get(`/api/steps/countTotal/${this.props.goalId}`)
+    axios.get(`/api/steps/countTotal/${goalId}`)
       .then((results) => {
         total = results.data.count;
       })
@@ -21,7 +21,7 @@ const ChartProgress = React.createClass({
         console.error(err);
       });
 
-    axios.get(`/api/steps/countByGoal/${this.props.goalId}`)
+    axios.get(`/api/steps/countByGoal/${goalId}`)
       .then((results) => {
         const newPercent = results.data.count / total;
         this.setState({ percentage: newPercent })
@@ -31,9 +31,16 @@ const ChartProgress = React.createClass({
       });
   },
 
+  componentWillMount() {
+    this.computePercentage(this.props.goalId);
+  },
+
   componentWillReceiveProps(nextProps) {
    if (this.props.nudge !== nextProps.nudge) {
-     this.componentWillMount();
+     this.computePercentage(this.props.goalId);
+   }
+   if (this.props.goalId !== nextProps.goalId) {
+     this.computePercentage(nextProps.goalId);
    }
   },
 
