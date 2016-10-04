@@ -37,7 +37,7 @@ router.get('/goals_users/username/:username', checkAuth, (req, res, next) => {
     });
 });
 
-// Save new row to goals_users AND goals
+// Save new data to goals_users AND goals AND steps
 router.post('/goals_users', checkAuth, (req, res, next) => {
   knex('goals')
     .insert(decamelizeKeys({ goalName: req.body.goalName }), '*')
@@ -49,7 +49,15 @@ router.post('/goals_users', checkAuth, (req, res, next) => {
         .insert(decamelizeKeys(row), '*');
     })
     .then((goalUser) => {
-      res.send(goalUser[0]);
+      return Promise.all(req.body.steps.map((step) => {
+        return knex('steps').insert({
+          step_name: step,
+          goal_id: goalUser[0].goal_id
+        })
+      }))
+    })
+    .then(() => {
+      res.sendStatus(200);
     })
     .catch((err) => {
       next(err);

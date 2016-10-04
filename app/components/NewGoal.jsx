@@ -37,7 +37,8 @@ const NewGoal = React.createClass({
   handleSubmit() {
     axios.post('/api/goals_users', {
       goalName: this.state.goalName,
-      userId: this.state.userId
+      userId: this.state.userId,
+      steps: this.state.steps
     })
     .then(() => {
       window.location.reload();
@@ -48,7 +49,6 @@ const NewGoal = React.createClass({
   },
 
   handleAddStep() {
-    console.log(tempSteps);
     tempSteps.push(this.state.stepName);
     this.setState({ steps: tempSteps, stepName: '' });
   },
