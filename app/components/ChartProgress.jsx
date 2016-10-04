@@ -26,9 +26,9 @@ const ChartProgress = React.createClass({
         const newPercent = results.data.count / total;
         this.setState({ percentage: newPercent })
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      // .catch((err) => {
+      //   console.error(err);
+      // });
   },
 
   componentWillMount() {
