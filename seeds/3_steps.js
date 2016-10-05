@@ -56,10 +56,12 @@ exports.seed = function(knex) {
         id: 9,
         goal_id: 1,
         step_name: 'Proofread',
+        user_id: 1
       },{
         id: 10,
         goal_id: 1,
         step_name: 'Publish',
+        user_id: 1
       },{
         id: 11,
         goal_id: 2,
@@ -75,7 +77,8 @@ exports.seed = function(knex) {
       },{
         id: 13,
         goal_id: 2,
-        step_name: 'Make shopping list'
+        step_name: 'Make shopping list',
+        user_id: 1
       },{
         id: 14,
         goal_id: 3,
@@ -91,15 +94,18 @@ exports.seed = function(knex) {
       },{
         id: 16,
         goal_id: 3,
-        step_name: 'Practice intervals'
+        step_name: 'Practice intervals',
+        user_id: 1
       },{
         id: 17,
         goal_id: 3,
-        step_name: 'Practice tempo run'
+        step_name: 'Practice tempo run',
+        user_id: 1
       },{
         id: 18,
         goal_id: 3,
-        step_name: 'Run a marathon'
+        step_name: 'Run a marathon',
+        user_id: 1
       },{
         id: 19,
         goal_id: 4,
@@ -115,7 +121,8 @@ exports.seed = function(knex) {
       },{
         id: 21,
         goal_id: 4,
-        step_name: 'Change repayment plan'
+        step_name: 'Change repayment plan',
+        user_id: 1
       },{
         id: 22,
         goal_id: 5,
@@ -143,7 +150,8 @@ exports.seed = function(knex) {
       },{
         id: 26,
         goal_id: 5,
-        step_name: 'Put basketball in basket while jumping'
+        step_name: 'Put basketball in basket while jumping',
+        user_id: 2
       },{
         id: 27,
         goal_id: 6,
@@ -159,11 +167,13 @@ exports.seed = function(knex) {
       },{
         id: 29,
         goal_id: 6,
-        step_name: 'Book hostels'
+        step_name: 'Book hostels',
+        user_id: 2
       },{
         id: 30,
         goal_id: 6,
-        step_name: 'Book flight'
+        step_name: 'Book flight',
+        user_id: 2
       }]);
     })
     .then(() => {

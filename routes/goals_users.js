@@ -52,7 +52,8 @@ router.post('/goals_users', checkAuth, (req, res, next) => {
       return Promise.all(req.body.steps.map((step) => {
         return knex('steps').insert({
           step_name: step,
-          goal_id: goalUser[0].goal_id
+          goal_id: goalUser[0].goal_id,
+          user_id: goalUser[0].user_id
         })
       }))
     })

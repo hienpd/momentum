@@ -51,7 +51,7 @@ const Dashboard = React.createClass({
     const currentMonth = today.getMonth();
     const MM = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
 
-    Promise.all(MM.map((month) => {
+    Promise.all(MM.map((month) => { // This ONE
       return axios.get(`/api/steps/countByMonth/${username}/${currentYear}-${month}`);
     }))
       .then((results) => {
@@ -60,6 +60,7 @@ const Dashboard = React.createClass({
         });
         dataPoints.splice((currentMonth + 1), (11 - currentMonth));
         this.setState({ dataPoints });
+        console.log('data points', dataPoints);
       })
       .catch((err) => {
         console.error(err);
@@ -119,7 +120,12 @@ const Dashboard = React.createClass({
       .catch((err) => {
         console.error(err);
       });
-    },
+  },
+
+  componentWillReceiveProps() {
+    console.log('will receive props');
+    this.componentWillMount();
+  },
 
   render() {
     return <div>

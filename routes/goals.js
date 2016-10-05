@@ -50,17 +50,17 @@ router.get('/goals/username/:username', checkAuth, (req, res, next) => {
 });
 
 // Save a new goal
-router.post('/goals', checkAuth, (req, res, next) => {
-  const { goalName, deadline, target } = req.body;
-
-  knex('goals')
-    .insert(decamelizeKeys({ goalName, deadline, target }), '*')
-    .then((goals) => {
-      res.send(goals[0]);
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
+// router.post('/goals', checkAuth, (req, res, next) => {
+//   const { goalName, deadline, target } = req.body;
+//
+//   knex('goals')
+//     .insert(decamelizeKeys({ goalName, deadline, target }), '*')
+//     .then((goals) => {
+//       res.send(goals[0]);
+//     })
+//     .catch((err) => {
+//       next(err);
+//     });
+// });
 
 module.exports = router;
