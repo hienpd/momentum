@@ -376,3 +376,9 @@ li > a:active {
 .steps-list {
   margin: 25px 0;
 }
+
+#rocket {
+  height: 100px;
+  width: 100px;
+  margin-top: -25px;
+}

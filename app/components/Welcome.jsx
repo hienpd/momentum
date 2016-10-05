@@ -10,6 +10,9 @@ const Welcome = React.createClass({
           <span id="brand-logo">Momentum</span>
         </div>
         <div>
+          <img id="rocket" src="rocket_logo.png" />
+        </div>
+        <div>
           <span id="slogan">A Progress Tracker for Your Personal Goals</span>
         </div>
         <div className="welcome-rows">
