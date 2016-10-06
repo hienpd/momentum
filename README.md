@@ -13,4 +13,4 @@ Momentum takes goal setting and to-do lists to the next level. Set a goal and vi
 
 ## About This App
 
-Built with React, Express, PostgreSQL, Chart.js, ProgressBar.js, and the Forismatic API.
+Built with React, Express, PostgreSQL, Chart.js, ProgressBar.js, Material-UI, and the Forismatic API.
