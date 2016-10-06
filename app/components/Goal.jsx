@@ -63,10 +63,8 @@ const Goal = React.createClass({
 
   updateStep(completedAt, step) {
     const userId = cookie.load('momentum_userId');
-    console.log(userId);
     axios.patch(`/api/steps/${step.id}`, {completedAt, userId})
       .then((results) => {
-        console.log('update step', results, userId);
         const nextSteps = this.state.steps.map((element) => {
           if (step !== element) {
             return element;

@@ -60,7 +60,6 @@ const Dashboard = React.createClass({
         });
         dataPoints.splice((currentMonth + 1), (11 - currentMonth));
         this.setState({ dataPoints });
-        console.log('data points', dataPoints);
       })
       .catch((err) => {
         console.error(err);
@@ -123,7 +122,6 @@ const Dashboard = React.createClass({
   },
 
   componentWillReceiveProps() {
-    console.log('will receive props');
     this.componentWillMount();
   },
 

@@ -57,7 +57,6 @@ const ChartProductivity = React.createClass({
     const ctx = canvas.getContext('2d');
 
     if (chart) {
-      console.log(this.props.data);
       chart.data.datasets[0].data = this.props.data;
       chart.update();
       return;
